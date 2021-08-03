@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 
-import SetShowTile from "./SetShowTile.js"
+import SetTile from "./SetTile.js"
 
 const SetIndexPage = (prop) => {
     const [getSets, setSets] = useState([])
@@ -16,8 +16,8 @@ const SetIndexPage = (prop) => {
                 const sets = await response.json()
                 setSets(sets.sets)
             }
-        } catch (errors) {
-            console.log(`Error in Fetch: ${errors.message}`)
+        } catch (error) {
+            console.log(`Error in Fetch: ${error.message}`)
         }
     }
 
@@ -27,7 +27,7 @@ const SetIndexPage = (prop) => {
 
     const setList = getSets.map( set => {
         return (
-            <SetShowTile key={set.id} set={set} />
+            <SetTile key={set.id} set={set} />
         )
     })
 

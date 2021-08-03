@@ -13,12 +13,33 @@
   tab-size: 4;
 }
 
-.SetShowTile {
-  height: 15rem;
-  width: 35rem;
-  background-color: #C7E0E1;
-  margin-top: 1rem;
-  margin-bottom: 9rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
+.SetTile {
+  height: 50%;
+  background-color: #E2EDEE;
+  padding: 1rem;
+  margin: 1rem;
+  border: solid;
+  border-radius: 10px;
+  border-color: #979E9E
+}
+
+.SetTileImage {
+  width: 50%;
+}
+
+.ShowPageImage {
+  width: 90%;
+  margin-bottom: 2%;
+}
+
+.ShowPage {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+  padding: 5rem;
+}
+
+.KitTile {
+  padding: 2%;
 }
