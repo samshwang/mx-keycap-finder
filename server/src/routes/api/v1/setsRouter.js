@@ -18,7 +18,6 @@ setsRouter.get("/:id", async (req, res) => {
     try {
         const set = await Set.query().findById(setID)
         set.kits = await set.$relatedQuery("kits")
-        console.log(set)
         return res.status(200).json({set})
     } catch (error) {
         return res.status(500).json({error})

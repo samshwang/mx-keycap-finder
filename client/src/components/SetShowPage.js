@@ -36,10 +36,10 @@ const SetShowPage = (props) => {
     const releaseDate = new Date(getSet.releaseDate).toLocaleDateString("en-US")
 
     return (
-        <div className="ShowPage">
+        <div className="showPage">
             <h2><strong>{getSet.name}</strong></h2>
             <p>by {getSet.designer}</p>
-            <div className="ShowPageImage">
+            <div className="showPageImage">
                 <img src={getSet.imageURLpath} alt="{getSet.name} display" />
             </div>
             <p>

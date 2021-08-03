@@ -4,10 +4,10 @@ const KitTile = ({kit}) => {
     const { name, price, imageURLpath } = kit
 
     return (
-        <div className="KitTile">
+        <div className="kitTile">
             <h4>{name}</h4>
             <p>Price: ${price}</p>
-            <div className="KitPictures">
+            <div className="kitPictures">
                 <img src={imageURLpath} alt="" />
             </div>
         </div>
