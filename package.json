@@ -14,7 +14,11 @@
     "start": "yarn workspace mx-keycap-finder-server start",
     "dev:cypress": "yarn workspace mx-keycap-finder-server dev:e2e",
     "e2e:open": "yarn workspace mx-keycap-finder-e2e e2e:open",
-    "e2e:run": "yarn workspace mx-keycap-finder-e2e e2e:run"
+    "e2e:run": "yarn workspace mx-keycap-finder-e2e e2e:run",
+    "knex:migrate:latest": "yarn workspace mx-keycap-finder-server migrate:latest",
+    "knex:migrate:rollback": "yarn workspace mx-keycap-finder-server migrate:rollback",
+    "knex:migrate:make": "yarn workspace mx-keycap-finder-server migrate:make",
+    "db:seed": "yarn workspace mx-keycap-finder-server db:seed"
   },
   "engines": {
     "node": "^14.15",

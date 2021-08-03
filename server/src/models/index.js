@@ -1,4 +1,5 @@
-// include all of your models here using CommonJS requires
 const User = require("./User.js")
+const Set = require("./Set.js")
+const Kit = require("./Kit.js")
 
-module.exports = {User};
+module.exports = {User, Set, Kit};
