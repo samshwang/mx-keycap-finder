@@ -14,7 +14,7 @@
 }
 
 .setTile {
-  height: 50%;
+  height: 28%;
   background-color: #E2EDEE;
   padding: 1rem;
   margin: 1rem;
@@ -24,7 +24,7 @@
 }
 
 .setTileImage {
-  width: 50%;
+  width: 25%;
 }
 
 .showPageImage {
@@ -42,4 +42,16 @@
 
 .kitTile {
   padding: 2%;
+}
+
+.indexPage {
+  display:flex;
+  flex-direction:row;
+}
+
+.search {
+  padding: 1%;
+  background-color: #BCC8C8;
+  width: 60%;
+  height: 100vh;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 
 import SetTile from "./SetTile.js"
+import SearchForm from "./SearchForm.js"
 
 const SetIndexPage = (prop) => {
     const [getSets, setSets] = useState([])
@@ -32,8 +33,13 @@ const SetIndexPage = (prop) => {
     })
 
     return (
-        <div>
-            {setList}
+        <div className="indexPage">
+            <div className="search">
+                <SearchForm setSets={setSets}/>
+            </div>
+            <div>
+                {setList}
+            </div>
         </div>
     )
 }

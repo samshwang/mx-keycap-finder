@@ -1,13 +1,25 @@
 import express from "express"
 
-import { Set } from "../../../models/index.js"
+import { Color, Set } from "../../../models/index.js"
 
 const setsRouter = new express.Router()
 
 setsRouter.get("/", async (req, res) => {
+    const color = req.query.color
+    const theme = req.query.theme
+
+    console.log(color)
+    console.log(theme)
+
     try {
-        const sets = await Set.query()
-        return res.status(200).json({sets})
+        if (color) {
+            const queriedColor = await Color.query().findOne({name: color})
+            const queriedColorSets = await queriedColor.$relatedQuery("sets")
+            return res.status(200).json({sets: queriedColorSets})
+        } else {
+            const sets = await Set.query()
+            return res.status(200).json({sets})
+        }
     } catch (error) {
         return res.status(500).json({error})
     }
