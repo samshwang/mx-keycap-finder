@@ -1,0 +1,179 @@
+Set {
+  id: '1',
+  name: 'GMK Olivia',
+  profile: 'Cherry',
+  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  imageU  i19:  imageU  imageU  imageU  imageU  imageU sh  imageU  imageU  imageU  imageU  imageU  imageUod  imageUs/  imation/lib/queryBuilder/QueryBuilder.js:1489:32)
+    at QueryBuilder.execute (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/objection/lib/queryBuilder/QueryBuilder.js:670:20)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  nativeError: error: select "sets".* from "sets" inner join "settheme" on "sets"."id" = "settheme"."setID" where "settheme"."themeID" in ($1) - relation "settheme" does not exist
+      at Parser.parseErrorMessage (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/parser.js:287:98)
+      at Parser.handlePacket (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/parser.js:126:29)
+      at Parser.parse (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/parser.js:39:38)
+      at Socket.<anonymous> (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/index.js:11:42)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:548:15)
+      at addChunk (_stream_readable.js:309:12)
+      at readableAddChunk (_stream_readable.js:284:9)
+      at Socket.Readable.push (_stream_readable.js:223:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+    length: 107,
+    severity: 'ERROR',
+    code: '42P01',
+    detail: undefined,
+    hint: undefined,
+    position: '40',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '1376',
+    routine: 'parserOpenTable'
+  },
+  client: 'postgres'
+}
+>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+>
+✨  Done in 257.40s.
+➜
+^C^C^C^C^C%
+➜  mx-keycap-finder git:(filter) ✗ dropdb mx-keycap-finder_development
+➜  mx-keycap-finder git:(filter) ✗ createdb mx-keycap-finder_development
+➜  mx-keycap-finder git:(filter) ✗ yarn knex:migrate:latest
+yarn run v1.22.10
+$ yarn workspace mx-keycap-finder-server migrate:latest
+$ knex --knexfile ./knexfile.cjs migrate:latest
+Creating users
+Batch 1 run: 8 migrations
+✨  Done in 3.75s.
+➜  mx-keycap-finder git:(filter) ✗ yarn db:seed
+yarn run v1.22.10
+$ yarn workspace mx-keycap-finder-server db:seed
+$ node ./bin/seed.js
+seeding sets...
+seeding kits...
+seeding colors...
+seeding set colorways...
+seeding themes...
+seeding set themes...
+Done!
+✨  Done in 5.57s.
+➜  mx-keycap-finder git:(filter) ✗ yarn db:console
+yarn run v1.22.10
+$ yarn workspace mx-keycap-finder-server console
+$ node --experimental-repl-await ./src/console.js
+> let rose = await models.Theme.query().findById(1)
+undefined
+> rose
+Theme {
+  id: '1',
+  name: 'rose gold',
+  createdAt: 2021-08-05T04:08:09.258Z,
+  updatedAt: 2021-08-05T04:08:09.258Z
+}
+> await rose.$relatedQuery("sets")
+Uncaught:
+DBError: select "sets".* from "sets" inner join "settheme" on "sets"."id" = "settheme"."setID" where "settheme"."themeID" in ($1) - relation "settheme" does not exist
+    at wrapError (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/db-errors/lib/dbErrors.js:19:14)
+    at handleExecuteError (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/objection/lib/queryBuilder/QueryBuilder.js:1489:32)
+    at QueryBuilder.execute (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/objection/lib/queryBuilder/QueryBuilder.js:670:20)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  nativeError: error: select "sets".* from "sets" inner join "settheme" on "sets"."id" = "settheme"."setID" where "settheme"."themeID" in ($1) - relation "settheme" does not exist
+      at Parser.parseErrorMessage (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/parser.js:287:98)
+      at Parser.handlePacket (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/parser.js:126:29)
+      at Parser.parse (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/parser.js:39:38)
+      at Socket.<anonymous> (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/index.js:11:42)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:548:15)
+      at addChunk (_stream_readable.js:309:12)
+      at readableAddChunk (_stream_readable.js:284:9)
+      at Socket.Readable.push (_stream_readable.js:223:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {
+    length: 107,
+    severity: 'ERROR',
+    code: '42P01',
+    detail: undefined,
+    hint: undefined,
+    position: '40',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '1376',
+    routine: 'parserOpenTable'
+  },
+  client: 'postgres'
+}
+> await models.Theme.query()
+[
+  Theme {
+    id: '1',
+    name: 'rose gold',
+    createdAt: 2021-08-05T04:08:09.258Z,
+    updatedAt: 2021-08-05T04:08:09.258Z
+  },
+  Theme {
+    id: '2',
+    name: 'water',
+    createdAt: 2021-08-05T04:08:09.358Z,
+    updatedAt: 2021-08-05T04:08:09.358Z
+  },
+  Theme {
+    id: '3',
+    name: 'copper',
+    createdAt: 2021-08-05T04:08:09.453Z,
+    updatedAt: 2021-08-05T04:08:09.453Z
+  }
+]
+> await models.SetTheme.query()
+[
+  SetTheme {
+    id: '1',
+    setID: '1',
+    themeID: '1',
+    createdAt: 2021-08-05T04:08:09.550Z,
+    updatedAt: 2021-08-05T04:08:09.550Z
+  },
+  SetTheme {
+    id: '2',
+    setID: '2',
+    themeID: '3',
+    createdAt: 2021-08-05T04:08:09.563Z,
+    updatedAt: 2021-08-05T04:08:09.563Z
+  },
+  SetTheme {
+    id: '3',
+    setID: '3',
+    themeID: '2',
+    createdAt: 2021-08-05T04:08:09.656Z,
+    updatedAt: 2021-08-05T04:08:09.656Z
+  }
+]
+> await rose.$relatedQuery("sets")
+Uncaught:
+DBError: select "sets".* from "sets" inner join "settheme" on "sets"."id" = "settheme"."setID" where "settheme"."themeID" in ($1) - relation "settheme" does not exist
+    at wrapError (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/db-errors/lib/dbErrors.js:19:14)
+    at handleExecuteError (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/objection/lib/queryBuilder/QueryBuilder.js:1489:32)
+    at QueryBuilder.execute (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/objection/lib/queryBuilder/QueryBuilder.js:670:20)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  nativeError: error: select "sets".* from "sets" inner join "settheme" on "sets"."id" = "settheme"."setID" where "settheme"."themeID" in ($1) - relation "settheme" does not exist
+      at Parser.parseErrorMessage (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/parser.js:287:98)
+      at Parser.handlePacket (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/parser.js:126:29)
+      at Parser.parse (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/parser.js:39:38)
+      at Socket.<anonymous> (/Users/samshwang/challenges/breakable_toy/mx-keycap-finder/node_modules/pg-protocol/dist/index.js:11:42)
+      at Socket.emit (events.js:315:20)
+      at Socket.EventEmitter.emit (domain.js:548:15)
+      at addChunk (_stream_readable.js:309:12)
+      at readableAddChunk (_stream_readable.js:284:9)
+      at Socket.Readable.push (_stream_readable.js:223:10)
+      at TCP.onStreamRead (internal/stream_base_commons.js:188:23) {

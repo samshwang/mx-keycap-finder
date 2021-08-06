@@ -6,7 +6,7 @@ class Set extends Model {
     }
 
     static get relationMappings() {
-        const { Kit, Color, SetColorway } = require("./index.js")
+        const { Kit, Color, SetColorway, Theme, SetTheme } = require("./index.js")
 
         return {
             kits: {
@@ -17,6 +17,7 @@ class Set extends Model {
                     to: "kits.setID"
                 }
             },
+
             colors: {
                 relation: Model.ManyToManyRelation,
                 modelClass: Color,
@@ -29,12 +30,33 @@ class Set extends Model {
                     to: "colors.id"
                 }
             },
-            setColorways: {
+            setcolorways: {
                 relation: Model.HasManyRelation,
                 modelClass: SetColorway,
                 join: {
                     from: "sets.id",
                     to: "setcolorways.setID"
+                }
+            },
+
+            themes: {
+                relation: Model.ManyToManyRelation,
+                modelClass: Theme,
+                join: {
+                    from: "sets.id",
+                    through: {
+                        from: "setthemes.setID",
+                        to: "setthemes.themeID"
+                    },
+                    to: "themes.id"
+                }
+            },
+            setthemes: {
+                relation: Model.HasManyRelation,
+                modelClass: SetTheme,
+                join: {
+                    from: "sets.id",
+                    to: "setthemes.setID"
                 }
             }
         }
