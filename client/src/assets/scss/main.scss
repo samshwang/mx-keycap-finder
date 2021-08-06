@@ -24,7 +24,8 @@
 }
 
 .setTileImage {
-  width: 25%;
+  max-width: 20%;
+  object-fit: contain;
 }
 
 .showPageImage {

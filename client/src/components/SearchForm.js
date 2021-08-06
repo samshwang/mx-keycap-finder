@@ -1,10 +1,14 @@
 import React, { useState } from "react"
 
 const SearchForm = (props) => {
-    const [getQuery, setQuery] = useState({
+    const emptyQuery = {
         color: "",
-        theme: ""
-    })
+        theme: "",
+        designer: "",
+        vendor: ""
+    }
+
+    const [getQuery, setQuery] = useState(emptyQuery)
 
     const trackQueryInput = (event) => {
         setQuery({
@@ -15,13 +19,10 @@ const SearchForm = (props) => {
 
     const clearForm = (event) => {
         event.preventDefault()
-        setQuery({
-            color: "",
-            theme: ""
-        })
+        setQuery(emptyQuery)
     }
 
-    const url = `/api/v1/sets/?color=${getQuery.color}&theme=${getQuery.theme}`
+    const url = `/api/v1/sets/?color=${getQuery.color}&theme=${getQuery.theme}&designer=${getQuery.designer}&vendor=${getQuery.vendor}`
     const submitForm = async (event) => {
         event.preventDefault()
 
@@ -56,6 +57,26 @@ const SearchForm = (props) => {
                         name="theme"
                         onChange={trackQueryInput}
                         value={getQuery.theme}
+                    />
+                </label>
+
+                <label htmlFor="designer">
+                    by designer
+                    <input
+                        type="text"
+                        name="designer"
+                        onChange={trackQueryInput}
+                        value={getQuery.designer}
+                    />
+                </label>
+
+                <label htmlFor="vendor">
+                    by vendor (US only at this time)
+                    <input
+                        type="text"
+                        name="vendor"
+                        onChange={trackQueryInput}
+                        value={getQuery.vendor}
                     />
                 </label>
 

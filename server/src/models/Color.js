@@ -21,7 +21,7 @@ class Color extends Model {
                     to: "sets.id"
                 }
             },
-            setColorways: {
+            setcolorways: {
                 relation: Model.HasManyRelation,
                 modelClass: SetColorway,
                 join: {

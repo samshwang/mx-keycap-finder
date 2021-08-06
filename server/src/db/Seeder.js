@@ -6,6 +6,10 @@ import ColorSeeder from "./seeders/ColorSeeder.js"
 import SetColorwaySeeder from "./seeders/SetColorwaySeeder.js"
 import ThemeSeeder from "./seeders/ThemeSeeder.js"
 import SetThemeSeeder from "./seeders/SetThemeSeeder.js"
+import VendorSeeder from "./seeders/VendorSeeder.js"
+import SetVendorSeeder from "./seeders/SetVendorSeeder.js"
+import DesignerSeeder from "./seeders/DesignerSeeder.js"
+import SetDesignerSeeder from "./seeders/SetDesignerSeeder.js"
 
 class Seeder {
   static async seed() {
@@ -26,6 +30,18 @@ class Seeder {
 
     console.log("seeding set themes...")
     await SetThemeSeeder.seed()
+
+    console.log("seeding vendors...")
+    await VendorSeeder.seed()
+
+    console.log("seeding set vendors...")
+    await SetVendorSeeder.seed()
+
+    console.log("seeding designers...")
+    await DesignerSeeder.seed()
+
+    console.log("seeding set designers...")
+    await SetDesignerSeeder.seed()
 
     console.log("Done!")
     await connection.destroy()

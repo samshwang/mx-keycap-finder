@@ -15,7 +15,7 @@ exports.up = async (knex) => {
 
         table.string("link")
         table.string("designer")
-        table.string("vendor")
+        // table.string("vendor")
         table.date("releaseDate")
         table.string("salesFormat")
         table.string("round")
