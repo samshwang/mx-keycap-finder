@@ -13,6 +13,13 @@
   tab-size: 4;
 }
 
+
+
+.indexPage {
+  display:flex;
+  flex-direction:row;
+}
+
 .setTile {
   height: 28%;
   background-color: #E2EDEE;
@@ -27,6 +34,7 @@
   max-width: 20%;
   object-fit: contain;
 }
+
 
 .showPageImage {
   width: 90%;
@@ -45,14 +53,26 @@
   padding: 2%;
 }
 
-.indexPage {
-  display:flex;
-  flex-direction:row;
+
+.searchForm {
+  padding: 1%;
+  padding-bottom: 1%;
+  margin-bottom: 1rem;
+  background-color: #BCC8C8;
+  width: 70%;
+  height: 100vh;
 }
 
-.search {
-  padding: 1%;
-  background-color: #BCC8C8;
-  width: 60%;
-  height: 100vh;
+.adminOptions {
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #63CCAB;
+}
+
+
+
+.newSetForm {
+  width: 90%;
+  padding: 2%;
+  margin: auto;
 }

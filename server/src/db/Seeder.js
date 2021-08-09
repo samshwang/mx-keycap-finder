@@ -10,6 +10,7 @@ import VendorSeeder from "./seeders/VendorSeeder.js"
 import SetVendorSeeder from "./seeders/SetVendorSeeder.js"
 import DesignerSeeder from "./seeders/DesignerSeeder.js"
 import SetDesignerSeeder from "./seeders/SetDesignerSeeder.js"
+import UserSeeder from "./seeders/UserSeeder.js"
 
 class Seeder {
   static async seed() {
@@ -42,6 +43,9 @@ class Seeder {
 
     console.log("seeding set designers...")
     await SetDesignerSeeder.seed()
+
+    console.log("seeding users...")
+    await UserSeeder.seed()
 
     console.log("Done!")
     await connection.destroy()

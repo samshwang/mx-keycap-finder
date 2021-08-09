@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Redirect } from "react-router-dom"
 
 const SearchForm = (props) => {
     const emptyQuery = {
@@ -9,6 +10,7 @@ const SearchForm = (props) => {
     }
 
     const [getQuery, setQuery] = useState(emptyQuery)
+    const [redirectToForm, setRedirectToForm] = useState(false)
 
     const trackQueryInput = (event) => {
         setQuery({
@@ -33,6 +35,26 @@ const SearchForm = (props) => {
         } catch (error) {
             console.log(`Error in Fetch: ${error.message}`)
         }
+    }
+
+    const redirectToNewSetForm = (event) => {
+        event.preventDefault()
+        setRedirectToForm(true)
+    }
+
+    let adminOptions
+    if (props.currentUser && props.currentUser.administrator === true) {
+        adminOptions = (
+            <button className="adminOptions" onClick={redirectToNewSetForm}>
+                Add New Keycap Set
+            </button>
+        )
+    }
+
+    if (redirectToForm) {
+        return (
+            <Redirect push to="/new" />
+        )
     }
 
     return (
@@ -92,6 +114,9 @@ const SearchForm = (props) => {
                     />
                 </div>
             </form>
+                <div>
+                    {adminOptions}
+                </div>
         </div>
     )
 }

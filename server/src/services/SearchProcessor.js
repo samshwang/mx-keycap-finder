@@ -1,4 +1,4 @@
-import { Color, Set, Theme } from "../models/index.js"
+import { Set } from "../models/index.js"
 
 class SearchProcessor {
     static arrayify(userString) {
@@ -27,40 +27,41 @@ class SearchProcessor {
 
         if (color && theme && designer && vendor) {
             sets = await Set.query().joinRelated("[colors, themes, designers, vendors]")
-                .where((builder) => builder.whereIn("colors.name", color))
-                .where((builder) => builder.whereIn("themes.name", theme))
-                .where((builder) => builder.whereIn("designers.name", designer))
-                .where((builder) => builder.whereIn("vendors.name", vendor))
-                .groupBy("sets.id")
+            .where((builder) => builder.whereIn("colors.name", color))
+            .where((builder) => builder.whereIn("themes.name", theme))
+            .where((builder) => builder.whereIn("designers.name", designer))
+            .where((builder) => builder.whereIn("vendors.name", vendor))
+            .groupBy("sets.id")
         }
         
         else if (color && theme && designer) {
             sets = await Set.query().joinRelated("[colors, themes, designers]")
-                .where((builder) => builder.whereIn("colors.name", color))
-                .where((builder) => builder.whereIn("themes.name", theme))
-                .where((builder) => builder.whereIn("designers.name", designer))
-                .groupBy("sets.id")
+            .where((builder) => builder.whereIn("colors.name", color))
+            .where((builder) => builder.whereIn("themes.name", theme))
+            .where((builder) => builder.whereIn("designers.name", designer))
+            .groupBy("sets.id")
         } else if (color && designer && vendor) {
             sets = await Set.query().joinRelated("[colors, themes, vendors]")
-                .where((builder) => builder.whereIn("colors.name", color))
-                .where((builder) => builder.whereIn("themes.name", theme))
-                .where((builder) => builder.whereIn("vendors.name", vendor))
-                .groupBy("sets.id")
+            .where((builder) => builder.whereIn("colors.name", color))
+            .where((builder) => builder.whereIn("themes.name", theme))
+            .where((builder) => builder.whereIn("vendors.name", vendor))
+            .groupBy("sets.id")
         } else if (theme && designer && vendor) {
             sets = await Set.query().joinRelated("[themes, designers, vendors]")
-                .where((builder) => builder.whereIn("themes.name", theme))
-                .where((builder) => builder.whereIn("designers.name", designer))
-                .where((builder) => builder.whereIn("vendors.name", vendor))
-                .groupBy("sets.id")
+            .where((builder) => builder.whereIn("themes.name", theme))
+            .where((builder) => builder.whereIn("designers.name", designer))
+            .where((builder) => builder.whereIn("vendors.name", vendor))
+            .groupBy("sets.id")
         } else if (color && theme && vendor) {
             sets = await Set.query().joinRelated("[colors, themes, vendors]")
-                .where((builder) => builder.whereIn("colors.name", color))
-                .where((builder) => builder.whereIn("themes.name", theme))
-                .where((builder) => builder.whereIn("vendors.name", vendor))
-                .groupBy("sets.id")
+            .where((builder) => builder.whereIn("colors.name", color))
+            .where((builder) => builder.whereIn("themes.name", theme))
+            .where((builder) => builder.whereIn("vendors.name", vendor))
+            .groupBy("sets.id")
         }
         
         else if (color && theme) {
+            console.log("HERE")
             sets = await Set.query().joinRelated("[colors, themes]")
                 .where( (builder) =>  builder.whereIn("colors.name", color))
                 .where( (builder) => builder.whereIn("themes.name", theme))
@@ -115,7 +116,6 @@ class SearchProcessor {
         else {
             sets = await Set.query()
         }
-        
         return sets
     }
 }

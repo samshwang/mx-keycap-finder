@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import SetTile from "./SetTile.js"
 import SearchForm from "./SearchForm.js"
 
-const SetIndexPage = (prop) => {
+const SetIndexPage = (props) => {
     const [getSets, setSets] = useState([])
 
     const fetchSets = async () => {
@@ -26,16 +26,24 @@ const SetIndexPage = (prop) => {
         fetchSets()
     }, [])
 
-    const setList = getSets.map( set => {
-        return (
-            <SetTile key={set.id} set={set} />
+    let setList = getSets.map( set => {
+    return (
+        <SetTile key={set.id} set={set} />
         )
     })
+    
+    if (getSets.length === 0) {
+        setList = (
+            <div>
+            <p>Sorry, no matching results found...</p>
+            </div>
+        )
+    }
 
     return (
         <div className="indexPage">
-            <div className="search">
-                <SearchForm setSets={setSets}/>
+            <div className="searchForm">
+                <SearchForm setSets={setSets} currentUser={props.currentUser} />
             </div>
             <div>
                 {setList}

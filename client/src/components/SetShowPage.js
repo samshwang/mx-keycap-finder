@@ -3,7 +3,10 @@ import React, { useState, useEffect } from "react"
 import KitTile from "./KitTile.js"
 
 const SetShowPage = (props) => {
-    const [getSet, setSet] = useState({kits: []})
+    const [getSet, setSet] = useState({
+        kits: [],
+        USvendor: {},
+    })
 
     const setID = props.match.params.id
 
@@ -45,7 +48,7 @@ const SetShowPage = (props) => {
             <p>
                 <strong>Profile:</strong> {getSet.profile} <br/>
                 <strong>Sales Format:</strong> {getSet.salesFormat} <br/>
-                <strong>US Vendor:</strong> {getSet.vendor} <br/>
+                <strong>US Vendor:</strong> <a href={getSet.USvendor.url}>{getSet.USvendor.name}</a>  <br/>
                 <strong>Release Date:</strong> {releaseDate} <br/>
                 <strong>Status:</strong> {getSet.status} <br/>
             </p>

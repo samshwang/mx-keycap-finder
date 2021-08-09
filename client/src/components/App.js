@@ -9,6 +9,7 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import SetIndexPage from "./SetIndexPage.js"
 import SetShowPage from "./SetShowPage.js"
+import NewSetForm from "./NewSetForm.js"
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -19,7 +20,7 @@ const App = (props) => {
         setCurrentUser(user);
       })
       .catch(() => {
-        setCurrentUser(null);
+        setCurrentUser(undefined);
       });
   }, []);
   
@@ -27,7 +28,11 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
+        <Route exact path="/">
+          <SetIndexPage currentUser={currentUser}/>
+        </Route>
         <Route exact path="/" component={SetIndexPage} />
+        <Route exact path="/new" component={NewSetForm} />
         <Route exact path="/:id" component={SetShowPage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
