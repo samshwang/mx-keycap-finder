@@ -28,14 +28,21 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
+
         <Route exact path="/">
-          <SetIndexPage currentUser={currentUser}/>
+          <SetIndexPage currentUser={currentUser} />
         </Route>
-        <Route exact path="/" component={SetIndexPage} />
+
         <Route exact path="/new" component={NewSetForm} />
-        <Route exact path="/:id" component={SetShowPage} />
+
+        <Route exact path="/:id">
+          <SetShowPage currentUser={currentUser} />
+        </Route>
+
         <Route exact path="/users/new" component={RegistrationForm} />
+
         <Route exact path="/user-sessions/new" component={SignInForm} />
+        
       </Switch>
     </Router>
   );

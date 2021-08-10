@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { useParams, Redirect } from "react-router-dom"
 
 import KitTile from "./KitTile.js"
 
@@ -7,12 +8,13 @@ const SetShowPage = (props) => {
         kits: [],
         USvendor: {},
     })
+    const [shouldRedirect, setShouldRedirect] = useState(false)
 
-    const setID = props.match.params.id
+    const { id } = useParams()
 
     const fetchSet = async () => {
         try {
-            const response = await fetch(`/api/v1/sets/${setID}`)
+            const response = await fetch(`/api/v1/sets/${id}`)
             if (!response.ok) {
                 const errorMessage = `${response.status}: (${response.statusText})`
                 const error = new Error(errorMessage)
@@ -36,6 +38,56 @@ const SetShowPage = (props) => {
         )
     })
 
+    let salesInformation = (
+        <p>
+            <strong>Profile:</strong> {getSet.profile} <br/>
+            <strong>Sales Format:</strong> {getSet.salesFormat} <br/>
+            <strong>Release Date:</strong> {releaseDate} <br/>
+            <strong>Status:</strong> {getSet.status} <br/>
+        </p>
+    )
+    if (getSet.USvendor) {
+        salesInformation = (
+            <p>
+                <strong>Profile:</strong> {getSet.profile} <br/>
+                <strong>Sales Format:</strong> {getSet.salesFormat} <br/>
+                <strong>US Vendor:</strong> <a href={getSet.USvendor.url}>{getSet.USvendor.name}</a>  <br/>
+                <strong>Release Date:</strong> {releaseDate} <br/>
+                <strong>Status:</strong> {getSet.status} <br/>
+            </p>
+        )
+    }
+
+    const deleteSet = async (event) => {
+        event.preventDefault()
+        try {
+            const response = await fetch(`/api/v1/sets/${id}`, {
+                method: "DELETE"
+            })
+            if(!response.ok) {
+                const errorMessage = `${response.status} (${response.statusText})`
+                const error = new Error(errorMessage)
+                throw(error)
+            }
+            setShouldRedirect(true)
+        } catch(error) {
+            console.error(`Error in Fetch: ${error.message}`)
+        }
+    }
+
+    let adminOptions
+    if (props.currentUser && props.currentUser.administrator === true) {
+        adminOptions = (
+            <button className="adminOptionsDelete" onClick={deleteSet}>
+                Delete Keycap Set
+            </button>
+        )
+    }
+
+    if(shouldRedirect) {
+        return (<Redirect push to="/" />)
+    }
+    
     const releaseDate = new Date(getSet.releaseDate).toLocaleDateString("en-US")
 
     return (
@@ -45,15 +97,10 @@ const SetShowPage = (props) => {
             <div className="showPageImage">
                 <img src={getSet.imageURLpath} alt="{getSet.name} display" />
             </div>
-            <p>
-                <strong>Profile:</strong> {getSet.profile} <br/>
-                <strong>Sales Format:</strong> {getSet.salesFormat} <br/>
-                <strong>US Vendor:</strong> <a href={getSet.USvendor.url}>{getSet.USvendor.name}</a>  <br/>
-                <strong>Release Date:</strong> {releaseDate} <br/>
-                <strong>Status:</strong> {getSet.status} <br/>
-            </p>
+            {salesInformation}
             <h3><strong>Kits:</strong></h3>
             {kits}
+            {adminOptions}
         </div>
     )
 }

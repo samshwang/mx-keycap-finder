@@ -28,7 +28,10 @@ const SetIndexPage = (props) => {
 
     let setList = getSets.map( set => {
     return (
-        <SetTile key={set.id} set={set} />
+        <SetTile
+            key={set.id}
+            set={set}
+        />
         )
     })
     

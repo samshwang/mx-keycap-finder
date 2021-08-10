@@ -12,6 +12,8 @@ exports.up = async (knex) => {
     table.string("name").notNullable().unique()
     table.string("url")
 
+    table.bigInteger("setID").unsigned().index().references("sets.id").onUpdate("CASCADE").onDelete("CASCADE")
+
     table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
   })

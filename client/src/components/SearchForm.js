@@ -45,7 +45,7 @@ const SearchForm = (props) => {
     let adminOptions
     if (props.currentUser && props.currentUser.administrator === true) {
         adminOptions = (
-            <button className="adminOptions" onClick={redirectToNewSetForm}>
+            <button className="adminOptionsAdd" onClick={redirectToNewSetForm}>
                 Add New Keycap Set
             </button>
         )

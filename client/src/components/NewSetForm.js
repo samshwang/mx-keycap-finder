@@ -1,4 +1,8 @@
 import React, { useState } from "react"
+import { Redirect } from "react-router-dom"
+
+import ErrorList from "./ErrorList.js"
+import translateServerErrors from "../services/translateServerErrors.js"
 
 const NewSetForm = (props) => {
     const emptyForm = {
@@ -15,6 +19,8 @@ const NewSetForm = (props) => {
     }
 
     const [getNewSet, setNewSet] = useState(emptyForm)
+    const [errors, setErrors] = useState([])
+    const [redirectToIndex, setRedirectToIndex] = useState(false)
     
     const trackUserInput = (event) => {
         setNewSet({
@@ -22,8 +28,6 @@ const NewSetForm = (props) => {
             [event.currentTarget.name]: event.currentTarget.value,
         })
     }
-    
-    console.log(getNewSet)
     
     const submitForm = async (event) => {
         event.preventDefault()
@@ -47,7 +51,7 @@ const NewSetForm = (props) => {
                 throw(error)
               }
             } else {
-                //redirect to new set show page here
+                setRedirectToIndex(true)
             }
           } catch(error) {
             console.error(`Error in Fetch: ${error.message}`)
@@ -55,11 +59,19 @@ const NewSetForm = (props) => {
     }
 
     const clearForm = (event) => {
+        event.preventDefault()
         setNewSet(emptyForm)
     }
 
+    if (redirectToIndex) {
+        return (
+            <Redirect push to="/" />
+        )
+    }
+
     return (
-        <div className="newSetForm">
+        <div className="newSetForm" onSubmit={submitForm}>
+            <ErrorList errors={errors} />
             <h4>Submit a New Keycap Set</h4>
             <form>
             <label htmlFor="name">
@@ -115,7 +127,7 @@ const NewSetForm = (props) => {
                 <label htmlFor="releaseDate">
                     Release Date: 
                     <input
-                        type="text"
+                        type="date"
                         name="releaseDate"
                         onChange={trackUserInput}
                         value={getNewSet.releaseDate}
@@ -151,6 +163,18 @@ const NewSetForm = (props) => {
                         value={getNewSet.status}
                     />
                 </label>
+
+                <div>
+                    <input
+                        type="submit"
+                        value="Add"
+                    />
+                    <input
+                        type="submit"
+                        value="clear"
+                        onClick={clearForm}
+                    />
+                </div>
             </form>
         </div>
     )

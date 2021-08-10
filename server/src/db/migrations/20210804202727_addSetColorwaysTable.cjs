@@ -9,7 +9,7 @@ exports.up = async (knex) => {
     return knex.schema.createTable("setcolorways", (table) => {
         table.bigIncrements("id")
 
-        table.bigInteger("setID").unsigned().notNullable().index().references("sets.id")
+        table.bigInteger("setID").unsigned().notNullable().index().references("sets.id").onUpdate("CASCADE").onDelete("CASCADE")
         table.bigInteger("colorID").unsigned().notNullable().index().references("colors.id")
 
         table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())

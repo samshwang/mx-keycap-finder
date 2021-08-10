@@ -115,10 +115,10 @@ class Set extends Model {
 
                 link: {type: "string", minLength: 1},
                 designer: {type: "string", minLength: 1, maxLength: 20},
-                vendor: {type: "string", minLength: 1, maxLength: 20},
+                // vendor: {type: "string", minLength: 1, maxLength: 20},
                 releaseDate: {type: "date"},
                 salesFormat: {type: "string", minLength: 1, maxLength: 20},
-                round: {type: "integer"},
+                round: {type: "string"},
                 status: {type: "string", minLength: 1, maxLength: 20}
             }
         }

@@ -46,4 +46,14 @@ setsRouter.post("/new", async (req, res) => {
     }
 })
 
+setsRouter.delete("/:id", async (req, res) => {
+    const setID = req.params.id
+    try {
+        const set = await Set.query().deleteById(setID)
+        return res.status(200).json({set})
+    } catch (error) {
+    return res.status(500).json({ error })
+    }
+})
+
 export default setsRouter
