@@ -9,9 +9,7 @@ const setsRouter = new express.Router()
 
 setsRouter.get("/", async (req, res) => {
     const { color, theme, designer, vendor } = req.query
-
     const queryObject = SearchProcessor.arrayifyObject({color: color, theme: theme, designer: designer, vendor: vendor})
-
     try {
         const sets = await SearchProcessor.databaseQuery(queryObject)
         return res.status(200).json({sets})
@@ -34,8 +32,8 @@ setsRouter.get("/:id", async (req, res) => {
 })
 
 setsRouter.post("/new", async (req, res) => {
+    const incomingSet = req.body
     try {
-        const incomingSet = req.body
         const newSet = await Set.query().insertAndFetch(incomingSet)
         return res.status(201).json({set: newSet})
     } catch (error) {
@@ -53,6 +51,29 @@ setsRouter.delete("/:id", async (req, res) => {
         return res.status(200).json({set})
     } catch (error) {
     return res.status(500).json({ error })
+    }
+})
+
+setsRouter.patch("/edit/:id", async (req, res) => {
+    const setID = req.params.id
+    const edits = req.body
+    try {
+        const set = await Set.query().findById(setID)
+        console.log()
+        const edittedSet = await Set.query().updateAndFetchById(setID, {
+            name: edits.name,
+            profile: edits.profile,
+            imageURLpath: edits.imageURLpath,
+            link: edits.link,
+            designer: edits.designer,
+            releaseDate: edits.releaseDate,
+            salesFormat: edits.salesFormat,
+            round: edits.round,
+            status: edits.status
+        })
+        return res.status(200).json({ edittedSet })
+    } catch (error) {
+        return res.status(500).json({ error })
     }
 })
 

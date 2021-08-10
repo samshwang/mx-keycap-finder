@@ -10,6 +10,7 @@ import TopBar from "./layout/TopBar";
 import SetIndexPage from "./SetIndexPage.js"
 import SetShowPage from "./SetShowPage.js"
 import NewSetForm from "./NewSetForm.js"
+import SetEditForm from "./SetEditForm.js"
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -34,6 +35,10 @@ const App = (props) => {
         </Route>
 
         <Route exact path="/new" component={NewSetForm} />
+
+        <Route exact path="/edit/:id">
+          <SetEditForm currentUser={currentUser} />
+        </Route>
 
         <Route exact path="/:id">
           <SetShowPage currentUser={currentUser} />

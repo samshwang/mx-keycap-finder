@@ -8,7 +8,8 @@ const SetShowPage = (props) => {
         kits: [],
         USvendor: {},
     })
-    const [shouldRedirect, setShouldRedirect] = useState(false)
+    const [shouldRedirectToIndex, setShouldRedirectToIndex] = useState(false)
+    const [shouldRedirectToEditForm, setShouldRedirectToEditForm] = useState(false)
 
     const { id } = useParams()
 
@@ -58,6 +59,10 @@ const SetShowPage = (props) => {
         )
     }
 
+    const editSet = (event) => {
+        setShouldRedirectToEditForm(true)
+    }
+
     const deleteSet = async (event) => {
         event.preventDefault()
         try {
@@ -69,7 +74,7 @@ const SetShowPage = (props) => {
                 const error = new Error(errorMessage)
                 throw(error)
             }
-            setShouldRedirect(true)
+            setShouldRedirectToIndex(true)
         } catch(error) {
             console.error(`Error in Fetch: ${error.message}`)
         }
@@ -78,14 +83,24 @@ const SetShowPage = (props) => {
     let adminOptions
     if (props.currentUser && props.currentUser.administrator === true) {
         adminOptions = (
-            <button className="adminOptionsDelete" onClick={deleteSet}>
-                Delete Keycap Set
-            </button>
+            <div>
+                <button className="adminOptionsEdit" onClick={editSet}>
+                    Edit Details
+                </button>
+                <button className="adminOptionsDelete" onClick={deleteSet}>
+                    Delete Keycap Set
+                </button>
+            </div>
         )
     }
 
-    if(shouldRedirect) {
+    if(shouldRedirectToIndex) {
         return (<Redirect push to="/" />)
+    }
+
+    const editFormURL = `/edit/${id}`
+    if(shouldRedirectToEditForm) {
+        return (<Redirect push to={editFormURL} />)
     }
     
     const releaseDate = new Date(getSet.releaseDate).toLocaleDateString("en-US")
