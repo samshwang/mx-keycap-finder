@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useParams, Redirect } from "react-router-dom"
 
+import MechMarketShowPage from "./MechMarketShowPage.js"
 import KitTile from "./KitTile.js"
 
 const SetShowPage = (props) => {
@@ -113,6 +114,7 @@ const SetShowPage = (props) => {
                 <img src={getSet.imageURLpath} alt="{getSet.name} display" />
             </div>
             {salesInformation}
+            <MechMarketShowPage />
             <h3><strong>Kits:</strong></h3>
             {kits}
             {adminOptions}

@@ -4,8 +4,11 @@ const { ValidationError } = objection
 
 import { Set } from "../../../models/index.js"
 import SearchProcessor from "../../../services/SearchProcessor.js"
+import setsMechMarketRouter from "./setsMechMarketRouter.js"
 
 const setsRouter = new express.Router()
+
+setsRouter.use("/:id/mechmarket", setsMechMarketRouter)
 
 setsRouter.get("/", async (req, res) => {
     const { color, theme, designer, vendor } = req.query

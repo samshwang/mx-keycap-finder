@@ -26,30 +26,30 @@ const App = (props) => {
   }, []);
   
   return (
-    <Router>
-      <TopBar user={currentUser} />
-      <Switch>
+  <Router>
+    <TopBar user={currentUser} />
+    <Switch>
 
-        <Route exact path="/">
-          <SetIndexPage currentUser={currentUser} />
-        </Route>
+      <Route exact path="/">
+        <SetIndexPage currentUser={currentUser} />
+      </Route>
 
-        <Route exact path="/new" component={NewSetForm} />
+      <Route exact path="/new" component={NewSetForm} />
 
-        <Route exact path="/edit/:id">
-          <SetEditForm currentUser={currentUser} />
-        </Route>
+      <Route exact path="/edit/:id">
+        <SetEditForm currentUser={currentUser} />
+      </Route>
 
-        <Route exact path="/:id">
-          <SetShowPage currentUser={currentUser} />
-        </Route>
+      <Route exact path="/:id">
+        <SetShowPage currentUser={currentUser} />
+      </Route>
 
-        <Route exact path="/users/new" component={RegistrationForm} />
+      <Route exact path="/users/new" component={RegistrationForm} />
 
-        <Route exact path="/user-sessions/new" component={SignInForm} />
-        
-      </Switch>
-    </Router>
+      <Route exact path="/user-sessions/new" component={SignInForm} />
+      
+    </Switch>
+  </Router>
   );
 };
 

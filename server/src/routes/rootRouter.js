@@ -6,6 +6,8 @@ import setsRouter from "./api/v1/setsRouter.js"
 import clientRouter from "./clientRouter.js";
 
 const rootRouter = new express.Router();
+
+
 rootRouter.use("/", clientRouter);
 
 rootRouter.use("/api/v1/user-sessions", userSessionsRouter);
