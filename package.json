@@ -14,10 +14,20 @@
     "start": "yarn workspace mx-keycap-finder-server start",
     "dev:cypress": "yarn workspace mx-keycap-finder-server dev:e2e",
     "e2e:open": "yarn workspace mx-keycap-finder-e2e e2e:open",
-    "e2e:run": "yarn workspace mx-keycap-finder-e2e e2e:run"
+    "e2e:run": "yarn workspace mx-keycap-finder-e2e e2e:run",
+    "db:migrate:latest": "yarn workspace mx-keycap-finder-server migrate:latest",
+    "db:migrate:rollback": "yarn workspace mx-keycap-finder-server migrate:rollback",
+    "db:migrate:make": "yarn workspace mx-keycap-finder-server migrate:make",
+    "db:seed": "yarn workspace mx-keycap-finder-server db:seed",
+    "db:console": "yarn workspace mx-keycap-finder-server console",
+    "db:drop": "dropdb mx_keycap_finder_development",
+    "db:create": "createdb mx_keycap_finder_development",
+    "db:refresh": "dropdb mx_keycap_finder_development && createdb mx_keycap_finder_development && yarn workspace mx-keycap-finder-server migrate:latest && yarn workspace mx-keycap-finder-server db:seed"
   },
   "engines": {
-    "node": "^14.15",
-    "yarn": "1.22.10"
+    "node": "^14.15"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
   }
 }

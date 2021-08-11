@@ -12,3 +12,108 @@
   -moz-tab-size: 4;
   tab-size: 4;
 }
+
+
+
+.indexPage {
+  display:flex;
+  flex-direction:row;
+}
+
+.setTile {
+  height: 16%;
+  background-color: #E2EDEE;
+  padding: 1rem;
+  margin: .5rem;
+  border: solid;
+  border-radius: 10px;
+  border-color: #979E9E;
+  display:flex;
+  flex-direction:row;
+}
+
+.setTileImage {
+  max-width: 20%;
+  padding-right: 1rem;
+  margin-right: 1 rem;
+  object-fit: contain;
+}
+
+
+.showPageImage {
+  width: 90%;
+  margin-bottom: 2%;
+}
+
+.showPage {
+  display:flex;
+  flex-direction:row;
+}
+
+.showPageDetails {
+  margin-left: auto;
+  margin-right: 20%;
+  display: block;
+  width: 100%;
+  padding: 5rem;
+
+}
+
+.kitTile {
+  padding: 2%;
+}
+
+.mechmarketShowPage {
+  background-color: #F0EEEA;
+  height: 100vh;
+  position: fixed;
+  bottom: 10;
+  right: 0;
+  width: 20%;
+}
+
+.mechmarketTile {
+  font-weight: 500;
+  margin: .5rem;
+  padding: 1rem;
+  background-color: #EADAB6;
+  border-radius: 5px;
+  border: solid;
+}
+
+.adminOptionsDelete {
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #D86490;
+}
+
+.adminOptionsEdit {
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #EBEED8;
+}
+
+
+
+.searchForm {
+  padding: 1%;
+  padding-bottom: 1%;
+  margin-bottom: 1rem;
+  background-color: #BCC8C8;
+  width: 70%;
+  height: 100vh;
+}
+
+.adminOptionsAdd {
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #63CCAB;
+}
+
+
+
+.newSetForm {
+  width: 90%;
+  padding: 2%;
+  margin: auto;
+}

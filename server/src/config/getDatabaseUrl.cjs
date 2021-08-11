@@ -1,7 +1,7 @@
 const getDatabaseUrl = (nodeEnv) => {
   return (
     {
-      development: "postgres://postgres:postgres@localhost:5432/mx-keycap-finder_development",
+      development: "postgres://postgres:postgres@localhost:5432/mx_keycap_finder_development",
       test: "postgres://postgres:postgres@localhost:5432/mx-keycap-finder_test",
       e2e: "postgres://postgres:postgres@localhost:5432/mx-keycap-finder_e2e",
     }[nodeEnv] || process.env.DATABASE_URL

@@ -1,0 +1,26 @@
+/**
+ * @typedef {import("knex")} Knex
+ */
+
+/**
+ * @param {Knex} knex
+ */
+exports.up = async (knex) => {
+    return knex.schema.createTable("colors", (table) => {
+        table.bigIncrements("id")
+
+        table.string("name").notNullable().unique()
+
+        table.bigInteger("setID").unsigned().index().references("sets.id").onUpdate("CASCADE").onDelete("CASCADE")
+
+        table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
+        table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
+    })
+}
+
+/**
+ * @param {Knex} knex
+ */
+exports.down = (knex) => {
+    return knex.schema.dropTableIfExists("colors")
+}
