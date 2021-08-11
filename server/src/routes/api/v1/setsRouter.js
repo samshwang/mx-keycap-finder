@@ -28,6 +28,11 @@ setsRouter.get("/:id", async (req, res) => {
         set.kits = await set.$relatedQuery("kits")
         const vendors = await set.$relatedQuery("vendors")
         set.USvendor = vendors[0]
+        const designers = await set.$relatedQuery("designers")
+        console.log(designers)
+        if (designers[0]) {
+            set.designer = designers[0].name
+        }
         return res.status(200).json({set})
     } catch (error) {
         return res.status(500).json({error})
@@ -62,13 +67,11 @@ setsRouter.patch("/edit/:id", async (req, res) => {
     const edits = req.body
     try {
         const set = await Set.query().findById(setID)
-        console.log()
         const edittedSet = await Set.query().updateAndFetchById(setID, {
             name: edits.name,
             profile: edits.profile,
             imageURLpath: edits.imageURLpath,
             link: edits.link,
-            designer: edits.designer,
             releaseDate: edits.releaseDate,
             salesFormat: edits.salesFormat,
             round: edits.round,

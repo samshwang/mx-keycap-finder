@@ -45,9 +45,11 @@ const SetIndexPage = (props) => {
 
     return (
         <div className="indexPage">
+
             <div className="searchForm">
                 <SearchForm setSets={setSets} currentUser={props.currentUser} />
             </div>
+            
             <div>
                 {setList}
             </div>

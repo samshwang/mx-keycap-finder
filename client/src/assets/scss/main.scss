@@ -21,17 +21,21 @@
 }
 
 .setTile {
-  height: 28%;
+  height: 16%;
   background-color: #E2EDEE;
   padding: 1rem;
   margin: .5rem;
   border: solid;
   border-radius: 10px;
-  border-color: #979E9E
+  border-color: #979E9E;
+  display:flex;
+  flex-direction:row;
 }
 
 .setTileImage {
   max-width: 20%;
+  padding-right: 1rem;
+  margin-right: 1 rem;
   object-fit: contain;
 }
 
@@ -42,15 +46,39 @@
 }
 
 .showPage {
+  display:flex;
+  flex-direction:row;
+}
+
+.showPageDetails {
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 20%;
   display: block;
   width: 100%;
   padding: 5rem;
+
 }
 
 .kitTile {
   padding: 2%;
+}
+
+.mechmarketShowPage {
+  background-color: #F0EEEA;
+  height: 100vh;
+  position: fixed;
+  bottom: 10;
+  right: 0;
+  width: 20%;
+}
+
+.mechmarketTile {
+  font-weight: 500;
+  margin: .5rem;
+  padding: 1rem;
+  background-color: #EADAB6;
+  border-radius: 5px;
+  border: solid;
 }
 
 .adminOptionsDelete {
@@ -88,13 +116,4 @@
   width: 90%;
   padding: 2%;
   margin: auto;
-}
-
-
-
-.mechmarketTile {
-  font-weight: 500;
-  margin: .5rem;
-  background-color: #EADAB6;
-  border-radius: 5px;
 }

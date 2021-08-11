@@ -24,11 +24,17 @@ const MechMarketShowForm = (props) => {
         }
     }
 
-    const posts = getPosts.map( (post, index) => {
+    let posts = getPosts.map( (post, index) => {
         return (
             <MechMarketShowTile key={index} post={post}/>
         )
     })
+
+    if (getPosts.length === 0) {
+        posts = (
+            <p>No relevant mechmarket posts found...</p>
+        )
+    }
 
     useEffect( () => {
         fetchPosts()

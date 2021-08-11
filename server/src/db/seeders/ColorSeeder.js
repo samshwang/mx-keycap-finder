@@ -3,17 +3,18 @@ import { Color } from "../../models/index.js"
 class ColorSeeder {
     static async seed() {
         const colors = [
-            {name: "black"},
-            {name: "white"},
-            {name: "gray"},
-            {name: "yellow"},
-            {name: "red"},
-            {name: "orange"},
-            {name: "pink"},
-            {name: "green"},
-            {name: "purple"},
-            {name: "blue"},
-            {name: "brown"}
+            {name: "black"}, //1
+            {name: "white"}, //2
+            {name: "gray"}, //3
+            {name: "yellow"}, //4
+            {name: "red"}, //5
+            {name: "orange"}, //6
+            {name: "pink"},  //7
+            {name: "green"}, //8
+            {name: "purple"}, //9
+            {name: "blue"}, //10
+            {name: "brown"}, //11
+            {name: "beige"}, //12
         ]
 
         for (const color of colors) {

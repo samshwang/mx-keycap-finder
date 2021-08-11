@@ -11,7 +11,6 @@ const NewSetForm = (props) => {
         imageURLpath: "",
 
         link: "",
-        designer: "",
         releaseDate: "",
         salesFormat: "",
         round: "",
@@ -21,6 +20,7 @@ const NewSetForm = (props) => {
     const [getNewSet, setNewSet] = useState(emptyForm)
     const [errors, setErrors] = useState([])
     const [redirectToIndex, setRedirectToIndex] = useState(false)
+    const [newSetID, setNewSetID] = useState()
     
     const trackUserInput = (event) => {
         setNewSet({
@@ -28,7 +28,7 @@ const NewSetForm = (props) => {
             [event.currentTarget.name]: event.currentTarget.value,
         })
     }
-    
+
     const submitForm = async (event) => {
         event.preventDefault()
 
@@ -51,6 +51,9 @@ const NewSetForm = (props) => {
                 throw(error)
               }
             } else {
+                const body = await response.json()
+                console.log(body)
+                setNewSetID(body.set.id)
                 setRedirectToIndex(true)
             }
           } catch(error) {
@@ -63,9 +66,10 @@ const NewSetForm = (props) => {
         setNewSet(emptyForm)
     }
 
+    const newURL = `/${newSetID}`
     if (redirectToIndex) {
         return (
-            <Redirect push to="/" />
+            <Redirect push to={newURL} />
         )
     }
 
@@ -111,16 +115,6 @@ const NewSetForm = (props) => {
                         name="link"
                         onChange={trackUserInput}
                         value={getNewSet.link}
-                    />
-                </label>
-
-                <label htmlFor="designer">
-                    Designer: 
-                    <input
-                        type="text"
-                        name="designer"
-                        onChange={trackUserInput}
-                        value={getNewSet.designer}
                     />
                 </label>
 

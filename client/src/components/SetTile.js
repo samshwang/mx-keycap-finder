@@ -9,10 +9,10 @@ const SetTile = (props) => {
     return (
         <Link to={setShowPageURL} >
             <div className="setTile">
-                <h3><strong>{set.name}</strong></h3>
                 <div className="setTileImage">
                     <img src={set.imageURLpath}/>
                 </div>
+                <h3><strong>{set.name}</strong></h3>
             </div>
         </Link>
     )

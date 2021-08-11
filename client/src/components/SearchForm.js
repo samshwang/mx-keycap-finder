@@ -92,16 +92,6 @@ const SearchForm = (props) => {
                     />
                 </label>
 
-                <label htmlFor="vendor">
-                    by vendor (US only at this time)
-                    <input
-                        type="text"
-                        name="vendor"
-                        onChange={trackQueryInput}
-                        value={getQuery.vendor}
-                    />
-                </label>
-
                 <div>
                     <input
                         type="submit"

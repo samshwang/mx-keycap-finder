@@ -7,6 +7,18 @@ import TimeFormatConverter from "../services/TimeFormatConverter.js"
 
 const SetEditForm = (props) => {
     const { id } = useParams()
+
+    const emptyForm = {
+        name: "",
+        profile: "",
+        imageURLpath: "",
+
+        link: "",
+        releaseDate: "",
+        salesFormat: "",
+        round: "",
+        status: ""
+    }
     
     const [getEdittedSet, setEdittedSet] = useState({})
     const [errors, setErrors] = useState([])
@@ -71,7 +83,7 @@ const SetEditForm = (props) => {
 
     const clearForm = (event) => {
         event.preventDefault()
-        setNewSet(emptyForm)
+        setEdittedSet(emptyForm)
     }
 
     if (redirectToSetShowPage) {
@@ -123,16 +135,6 @@ const SetEditForm = (props) => {
                         name="link"
                         onChange={trackUserInput}
                         value={getEdittedSet.link}
-                    />
-                </label>
-
-                <label htmlFor="designer">
-                    Designer: 
-                    <input
-                        type="text"
-                        name="designer"
-                        onChange={trackUserInput}
-                        value={getEdittedSet.designer}
                     />
                 </label>
 

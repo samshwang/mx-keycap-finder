@@ -3,9 +3,11 @@ import { Designer } from "../../models/index.js"
 class DesignerSeeder {
   static async seed() {
     const designers = [
-      { name: "olivia" },
+      { name: "olivia" }, //1
       { name: "fatboycarney" },
       { name: "Rensuya" },
+      { name: "Hazzy" },
+      { name: "Oblotzky" }, //5
     ]
 
     for (const designer of designers) {
