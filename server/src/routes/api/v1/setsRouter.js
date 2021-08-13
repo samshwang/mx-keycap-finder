@@ -11,8 +11,8 @@ const setsRouter = new express.Router()
 setsRouter.use("/:id/mechmarket", setsMechMarketRouter)
 
 setsRouter.get("/", async (req, res) => {
-    const { color, theme, designer, vendor } = req.query
-    const queryObject = SearchProcessor.arrayifyObject({color: color, theme: theme, designer: designer, vendor: vendor})
+    const { color, theme, designer } = req.query
+    const queryObject = SearchProcessor.arrayifyObject({color: color, theme: theme, designer: designer})
     try {
         const sets = await SearchProcessor.databaseQuery(queryObject)
         return res.status(200).json({sets})
