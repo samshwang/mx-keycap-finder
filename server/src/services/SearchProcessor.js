@@ -1,4 +1,4 @@
-import { Set, Color, Theme, Designer, Vendor } from "../models/index.js"
+import { Set, Color, Theme, Designer } from "../models/index.js"
 
 class SearchProcessor {
     static arrayify(userString) {
@@ -21,33 +21,26 @@ class SearchProcessor {
     }
 
     static async databaseQuery(queryObject) {
-        const { color, theme, designer, vendor } = queryObject
-
-        let colors, themes, designers
+        let { colors, themes, designers } = queryObject
         
-        if (color == undefined || color == "") {
+        if (colors == undefined || colors == "") {
             const allColors = await Color.query()
             colors = allColors.map(color => {
                 return color.name
             })
         } else {
-            colors = color
         }
-        if (theme == undefined || theme == "") {
+        if (themes == undefined || themes == "") {
             const allThemes = await Theme.query()
             themes = allThemes.map(theme => {
                 return theme.name
             })
-        } else {
-            themes = theme
         }
-        if (designer == undefined || designer == "") {
+        if (designers == undefined || designers == "") {
             const allDesigners = await Designer.query()
             designers = allDesigners.map(designer => {
                 return designer.name
             })
-        } else {
-            designers = designer
         }
 
         const sets = await Set.query().joinRelated("[colors, themes, designers]")

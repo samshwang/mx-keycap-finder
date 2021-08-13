@@ -3,10 +3,10 @@ import { Redirect } from "react-router-dom"
 
 const SearchForm = (props) => {
     const emptyQuery = {
-        color: "",
-        theme: "",
-        designer: "",
-        vendor: ""
+        colors: "",
+        themes: "",
+        designers: "",
+        vendors: ""
     }
 
     const [getQuery, setQuery] = useState(emptyQuery)
@@ -24,7 +24,7 @@ const SearchForm = (props) => {
         setQuery(emptyQuery)
     }
 
-    const url = `/api/v1/sets/?color=${getQuery.color}&theme=${getQuery.theme}&designer=${getQuery.designer}&vendor=${getQuery.vendor}`
+    const url = `/api/v1/sets/?colors=${getQuery.colors}&themes=${getQuery.themes}&designers=${getQuery.designers}`
     const submitForm = async (event) => {
         event.preventDefault()
 
@@ -62,31 +62,31 @@ const SearchForm = (props) => {
             <h5>Search for keycaps:</h5>
 
             <form onSubmit={submitForm}>
-                <label htmlFor="color">
+                <label htmlFor="colors">
                     by color
                     <input
                         type="text"
-                        name="color"
+                        name="colors"
                         onChange={trackQueryInput}
                         value={getQuery.color}
                     />
                 </label>
 
-                <label htmlFor="theme">
+                <label htmlFor="themes">
                     by theme
                     <input
                         type="text"
-                        name="theme"
+                        name="themes"
                         onChange={trackQueryInput}
                         value={getQuery.theme}
                     />
                 </label>
 
-                <label htmlFor="designer">
+                <label htmlFor="designers">
                     by designer
                     <input
                         type="text"
-                        name="designer"
+                        name="designers"
                         onChange={trackQueryInput}
                         value={getQuery.designer}
                     />
