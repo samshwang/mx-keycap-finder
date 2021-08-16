@@ -13,10 +13,9 @@ const AboutPage = (props) => {
             also from the top bar. You can also edit pre-existing keycap sets on their respective show pages.<br/><br/>
             You will need to be logged into an admin account to be able to add and edit keycap sets. You can use the
             below admin credentials to log into a sample admin account for this prototype:<br/><br/>
-                <strong>username:</strong> admin<br/>
+                <strong>email:</strong> admin@test.com<br/>
                 <strong>password:</strong> password
         </p>
-        <button>Explore keycaps</button>
       </div>
   )
 }

@@ -31,19 +31,17 @@ const App = (props) => {
     <TopBar user={currentUser} />
     <Switch>
 
-      <Route exact path="/">
-        <AboutPage currentUser={currentUser} />
-      </Route>
+      <Route exact path="/" component={AboutPage} />
 
-      <Route exact path="/about">
-        <AboutPage currentUser={currentUser} />
-      </Route>
+      <Route exact path="/about" component={AboutPage} />
 
       <Route exact path="/list">
         <SetIndexPage currentUser={currentUser} />
       </Route>
 
-      <Route exact path="/new" component={NewSetForm} />
+      <Route exact path="/new">
+        <NewSetForm currentUser={currentUser} />
+      </Route>
 
       <Route exact path="/edit/:id">
         <SetEditForm currentUser={currentUser} />

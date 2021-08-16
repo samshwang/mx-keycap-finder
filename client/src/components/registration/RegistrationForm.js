@@ -7,6 +7,7 @@ const RegistrationForm = () => {
     email: "",
     password: "",
     passwordConfirmation: "",
+    administrator: false
   });
 
   const [errors, setErrors] = useState({});
@@ -60,6 +61,7 @@ const RegistrationForm = () => {
           "Content-Type": "application/json",
         }),
       }).then((resp) => {
+          console.log(resp)
         if (resp.ok) {
           resp.json().then((user) => {
             setShouldRedirect(true);
@@ -85,7 +87,7 @@ const RegistrationForm = () => {
   }
 
   return (
-    <div className="grid-container" onSubmit={onSubmit}>
+    <div className="grid-container authForm" onSubmit={onSubmit}>
       <h1>Register</h1>
       <form>
         <div>
