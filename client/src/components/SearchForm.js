@@ -3,14 +3,12 @@ import { Redirect } from "react-router-dom"
 
 const SearchForm = (props) => {
     const emptyQuery = {
-        color: "",
-        theme: "",
-        designer: "",
-        vendor: ""
+        colors: "",
+        themes: "",
+        designers: ""
     }
 
     const [getQuery, setQuery] = useState(emptyQuery)
-    const [redirectToForm, setRedirectToForm] = useState(false)
 
     const trackQueryInput = (event) => {
         setQuery({
@@ -24,7 +22,7 @@ const SearchForm = (props) => {
         setQuery(emptyQuery)
     }
 
-    const url = `/api/v1/sets/?color=${getQuery.color}&theme=${getQuery.theme}&designer=${getQuery.designer}&vendor=${getQuery.vendor}`
+    const url = `/api/v1/sets/?colors=${getQuery.colors}&themes=${getQuery.themes}&designers=${getQuery.designers}`
     const submitForm = async (event) => {
         event.preventDefault()
 
@@ -37,76 +35,56 @@ const SearchForm = (props) => {
         }
     }
 
-    const redirectToNewSetForm = (event) => {
-        event.preventDefault()
-        setRedirectToForm(true)
-    }
-
-    let adminOptions
-    if (props.currentUser && props.currentUser.administrator === true) {
-        adminOptions = (
-            <button className="adminOptionsAdd" onClick={redirectToNewSetForm}>
-                Add New Keycap Set
-            </button>
-        )
-    }
-
-    if (redirectToForm) {
-        return (
-            <Redirect push to="/new" />
-        )
-    }
-
     return (
         <div>
-            <h5>Search for keycaps:</h5>
+            <h5><strong>Search for keycaps</strong></h5>
 
             <form onSubmit={submitForm}>
-                <label htmlFor="color">
-                    by color
+                <label htmlFor="colors">
+                    by color<br/>
+                    (example: "red", "brown, red")
                     <input
                         type="text"
-                        name="color"
+                        name="colors"
                         onChange={trackQueryInput}
-                        value={getQuery.color}
+                        value={getQuery.colors}
                     />
                 </label>
 
-                <label htmlFor="theme">
+                <label htmlFor="themes">
                     by theme
                     <input
                         type="text"
-                        name="theme"
+                        name="themes"
                         onChange={trackQueryInput}
-                        value={getQuery.theme}
+                        value={getQuery.themes}
                     />
                 </label>
 
-                <label htmlFor="designer">
+                <label htmlFor="designers">
                     by designer
                     <input
                         type="text"
-                        name="designer"
+                        name="designers"
                         onChange={trackQueryInput}
-                        value={getQuery.designer}
+                        value={getQuery.designers}
                     />
                 </label>
 
                 <div>
                     <input
+                        className="inputButton"
                         type="submit"
                         value="search"
                     />
                     <input
+                        className="inputButton"
                         type="submit"
                         value="clear"
                         onClick={clearForm}
                     />
                 </div>
             </form>
-                <div>
-                    {adminOptions}
-                </div>
         </div>
     )
 }

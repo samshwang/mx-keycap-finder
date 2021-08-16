@@ -18,7 +18,6 @@ const SetShowPage = (props) => {
         try {
             const response = await fetch(`/api/v1/sets/${id}`)
             if (!response.ok) {
-                console.log("here")
                 const errorMessage = `${response.status}: (${response.statusText})`
                 const error = new Error(errorMessage)
                 throw(error)
@@ -40,9 +39,9 @@ const SetShowPage = (props) => {
             <KitTile key={kit.id} kit={kit}/>
         )
     })
-    
+
     const releaseDate = new Date(getSet.releaseDate).toLocaleDateString("en-US")
-    
+
     let salesInformation = (
         <p>
             <strong>Profile:</strong> {getSet.profile} <br/>
@@ -109,20 +108,29 @@ const SetShowPage = (props) => {
 
     return (
         <div className="showPage">
-            
+
             <div className="showPageDetails">
-                <h2><strong>{getSet.name}</strong></h2>
-                <p>by {getSet.designer}</p>
-                <div className="showPageImage">
-                    <img src={getSet.imageURLpath} alt="{getSet.name} display" />
+                <div className="setHeader">
+                    <h2><strong>{getSet.name}</strong></h2>
+                    <p>by {getSet.designer}</p>
+                    <div className="showPageImage">
+                        <img src={getSet.imageURLpath} alt="{getSet.name} display" />
+                    </div>
                 </div>
-                {salesInformation}
-                <h3><strong>Kits:</strong></h3>
-                {kits}
+
+                <div className="salesInformation">
+                    {salesInformation}
+                </div>
+
+                <div className="kitsDisplay">
+                    <h3><strong>Kits:</strong></h3>
+                    {kits}
+                </div>
+
                 {adminOptions}
             </div>
             <div className="mechmarketShowPage">
-                <MechMarketShowPage />
+                <MechMarketShowPage name={getSet.name}/>
             </div>
         </div>
     )

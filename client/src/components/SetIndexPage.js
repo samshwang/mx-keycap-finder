@@ -34,14 +34,6 @@ const SetIndexPage = (props) => {
         />
         )
     })
-    
-    if (getSets.length === 0) {
-        setList = (
-            <div>
-            <p>Sorry, no matching results found...</p>
-            </div>
-        )
-    }
 
     return (
         <div className="indexPage">
@@ -49,8 +41,11 @@ const SetIndexPage = (props) => {
             <div className="searchForm">
                 <SearchForm setSets={setSets} currentUser={props.currentUser} />
             </div>
-            
+
             <div>
+                <div className="setListHeader">
+                    {getSets.length} keycap sets match your search:
+                </div>
                 {setList}
             </div>
         </div>

@@ -4,6 +4,11 @@ class UserSeeder {
     static async seed() {
         const users = [
             {
+                email: "admin@test.com",
+                password: "password",
+                administrator: true
+            },
+            {
                 email: "neo",
                 password: "1",
                 administrator: true

@@ -40,6 +40,7 @@ const SignInForm = () => {
           "Content-Type": "application/json",
         }),
       }).then((resp) => {
+          console.log(resp)
         if (resp.ok) {
           resp.json().then(() => {
             setShouldRedirect(true);
@@ -64,7 +65,7 @@ const SignInForm = () => {
   }
 
   return (
-    <div className="grid-container" onSubmit={onSubmit}>
+    <div className="grid-container authForm" onSubmit={onSubmit}>
       <h1>Sign In</h1>
       <form>
         <div>
