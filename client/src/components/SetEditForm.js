@@ -198,7 +198,7 @@ const SetEditForm = (props) => {
     } else {
         return (
             <div className="newSetForm">
-                <p>must be logged into an admin account to add or edit keycap sets</p>
+                <p>You must be logged into an admin account to add or edit keycap sets</p>
             </div>
         )
     }

@@ -42,7 +42,7 @@ const SearchForm = (props) => {
             <form onSubmit={submitForm}>
                 <label htmlFor="colors">
                     by color<br/>
-                    (example: "red", "brown, red")
+                    <em>(example: "red", "brown, red")</em>
                     <input
                         type="text"
                         name="colors"
