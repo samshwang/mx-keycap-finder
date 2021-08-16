@@ -15,7 +15,17 @@
 
 
 
+.top-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border: 10px;
+}
+
+
+
 .indexPage {
+  margin-top: 55px;
   display:flex;
   flex-direction:row;
 }
@@ -33,10 +43,24 @@
 }
 
 .setTileImage {
-  max-width: 20%;
+  width: 15%;
   padding-right: 1rem;
   margin-right: 1 rem;
+  margin-left: 1rem;
   object-fit: contain;
+}
+
+.setListHeader {
+    height: 1%;
+    background-color: #D8E2E5;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    padding-bottom: 2rem;
+    margin: .5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    display: flex;
 }
 
 
@@ -53,10 +77,30 @@
 .showPageDetails {
   margin-left: auto;
   margin-right: 20%;
+  margin-top: 3%;
   display: block;
   width: 100%;
-  padding: 5rem;
+  padding: 2%;
+}
 
+.setHeader {
+    background-color: #F9FCFC;
+    border-radius: 5px;
+    padding: 3%;
+    margin-bottom: .5rem;
+}
+
+.salesInformation {
+    background-color: #F1F8FA;
+    border-radius: 5px;
+    padding: 3%;
+    margin-bottom: .5rem;
+}
+
+.kitsDisplay {
+    background-color: #E2EDEE;
+    border-radius: 5px;
+    padding: 3%;
 }
 
 .kitTile {
@@ -64,12 +108,18 @@
 }
 
 .mechmarketShowPage {
+  margin-top: 55px;
   background-color: #F0EEEA;
   height: 100vh;
   position: fixed;
   bottom: 10;
   right: 0;
   width: 20%;
+  overflow-y: scroll;
+}
+
+.mechmarketHeader {
+    margin: .5rem;
 }
 
 .mechmarketTile {
@@ -84,13 +134,19 @@
 .adminOptionsDelete {
   padding: 1rem;
   margin-top: 1rem;
-  background-color: #D86490;
+  background-color: #EE5555;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
 }
 
 .adminOptionsEdit {
   padding: 1rem;
   margin-top: 1rem;
-  background-color: #EBEED8;
+  margin-right: .5rem;
+  background-color: #D8E2E5;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 
@@ -104,16 +160,51 @@
   height: 100vh;
 }
 
-.adminOptionsAdd {
-  padding: 1rem;
-  margin-top: 1rem;
-  background-color: #63CCAB;
+
+.newSetForm {
+  height: 90%;
+  padding: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 100px;
+  margin-bottom: 5%;
+  background-color: #E2EDEE;
+  border-radius: 5px;
+}
+
+.inputButton {
+  border-radius: 3px;
+  margin-right: 3px;
+  background-color: #D8E2E5;
+}
+
+.topBarLinks {
+  font-weight: 750;
+}
+
+.button {
+  font-weight: 500;
+}
+
+.about {
+    margin: 10%;
+    padding: 10%;
+    border: solid;
+    border-radius: 10px;
+    border-color: #E2EDEE;
+    background-color: #E2EDEE;
 }
 
 
 
-.newSetForm {
-  width: 90%;
-  padding: 2%;
-  margin: auto;
+h4 {
+    font-weight: bold;
+}
+
+p {
+    font-size: 120%;
+}
+
+h5 {
+    font-weight: bold;
 }

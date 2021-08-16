@@ -19,7 +19,7 @@ const SetEditForm = (props) => {
         round: "",
         status: ""
     }
-    
+
     const [getEdittedSet, setEdittedSet] = useState({})
     const [errors, setErrors] = useState([])
     const [redirectToSetShowPage, setRedirectToSetShowPage] = useState(false)
@@ -96,10 +96,10 @@ const SetEditForm = (props) => {
     return (
         <div className="newSetForm" onSubmit={submitForm}>
             <ErrorList errors={errors} />
-            <h4>Submit a New Keycap Set</h4>
+            <h4>Edit Keycap Set</h4>
             <form>
             <label htmlFor="name">
-                    Name: 
+                    Name:
                     <input
                         type="text"
                         name="name"
@@ -109,7 +109,7 @@ const SetEditForm = (props) => {
                 </label>
 
                 <label htmlFor="profile">
-                    Profile: 
+                    Profile:
                     <input
                         type="text"
                         name="profile"
@@ -119,7 +119,7 @@ const SetEditForm = (props) => {
                 </label>
 
                 <label htmlFor="imageURLpath">
-                    Image Link: 
+                    Image Link:
                     <input
                         type="text"
                         name="imageURLpath"
@@ -139,7 +139,7 @@ const SetEditForm = (props) => {
                 </label>
 
                 <label htmlFor="releaseDate">
-                    Release Date: 
+                    Release Date:
                     <input
                         type="date"
                         name="releaseDate"
@@ -149,7 +149,7 @@ const SetEditForm = (props) => {
                 </label>
 
                 <label htmlFor="salesFormat">
-                    Sales Format: 
+                    Sales Format:
                     <input
                         type="text"
                         name="salesFormat"
@@ -159,7 +159,7 @@ const SetEditForm = (props) => {
                 </label>
 
                 <label htmlFor="round">
-                    Round: 
+                    Round:
                     <input
                         type="text"
                         name="round"
@@ -169,7 +169,7 @@ const SetEditForm = (props) => {
                 </label>
 
                 <label htmlFor="status">
-                    Status: 
+                    Status:
                     <input
                         type="text"
                         name="status"
@@ -180,10 +180,12 @@ const SetEditForm = (props) => {
 
                 <div>
                     <input
+                        className="inputButton"
                         type="submit"
                         value="Confirm Edits"
                     />
                     <input
+                        className="inputButton"
                         type="submit"
                         value="Clear"
                         onClick={clearForm}

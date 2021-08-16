@@ -24,9 +24,15 @@ const TopBar = ({ user }) => {
     <div className="top-bar">
       <div className="top-bar-left">
         <ul className="menu">
-          <li className="menu-text">MX Keycap Finder</li>
-          <li>
-            <Link to="/">Home</Link>
+          <li className="menu-text">MX KEYCAP FINDER</li>
+          <li className="topBarLinks">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="topBarLinks">
+            <Link to="/list">Keycaps List</Link>
+          </li>
+          <li className="topBarLinks">
+            <Link to="/new">Add Keycap Set</Link>
           </li>
         </ul>
       </div>

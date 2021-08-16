@@ -21,7 +21,7 @@ const NewSetForm = (props) => {
     const [errors, setErrors] = useState([])
     const [redirectToIndex, setRedirectToIndex] = useState(false)
     const [newSetID, setNewSetID] = useState()
-    
+
     const trackUserInput = (event) => {
         setNewSet({
             ...getNewSet,
@@ -79,7 +79,7 @@ const NewSetForm = (props) => {
             <h4>Submit a New Keycap Set</h4>
             <form>
             <label htmlFor="name">
-                    Name: 
+                    Name:
                     <input
                         type="text"
                         name="name"
@@ -89,7 +89,7 @@ const NewSetForm = (props) => {
                 </label>
 
                 <label htmlFor="profile">
-                    Profile: 
+                    Profile:
                     <input
                         type="text"
                         name="profile"
@@ -99,7 +99,7 @@ const NewSetForm = (props) => {
                 </label>
 
                 <label htmlFor="imageURLpath">
-                    Image Link: 
+                    Image Link:
                     <input
                         type="text"
                         name="imageURLpath"
@@ -119,7 +119,7 @@ const NewSetForm = (props) => {
                 </label>
 
                 <label htmlFor="releaseDate">
-                    Release Date: 
+                    Release Date:
                     <input
                         type="date"
                         name="releaseDate"
@@ -129,7 +129,7 @@ const NewSetForm = (props) => {
                 </label>
 
                 <label htmlFor="salesFormat">
-                    Sales Format: 
+                    Sales Format:
                     <input
                         type="text"
                         name="salesFormat"
@@ -139,7 +139,7 @@ const NewSetForm = (props) => {
                 </label>
 
                 <label htmlFor="round">
-                    Round: 
+                    Round:
                     <input
                         type="text"
                         name="round"
@@ -149,7 +149,7 @@ const NewSetForm = (props) => {
                 </label>
 
                 <label htmlFor="status">
-                    Status: 
+                    Status:
                     <input
                         type="text"
                         name="status"
@@ -160,10 +160,12 @@ const NewSetForm = (props) => {
 
                 <div>
                     <input
+                        className="inputButton"
                         type="submit"
                         value="Add"
                     />
                     <input
+                        className="inputButton"
                         type="submit"
                         value="clear"
                         onClick={clearForm}

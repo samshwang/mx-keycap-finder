@@ -11,6 +11,7 @@ import SetIndexPage from "./SetIndexPage.js"
 import SetShowPage from "./SetShowPage.js"
 import NewSetForm from "./NewSetForm.js"
 import SetEditForm from "./SetEditForm.js"
+import AboutPage from "./AboutPage.js"
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -24,13 +25,21 @@ const App = (props) => {
         setCurrentUser(undefined);
       });
   }, []);
-  
+
   return (
   <Router>
     <TopBar user={currentUser} />
     <Switch>
 
       <Route exact path="/">
+        <AboutPage currentUser={currentUser} />
+      </Route>
+
+      <Route exact path="/about">
+        <AboutPage currentUser={currentUser} />
+      </Route>
+
+      <Route exact path="/list">
         <SetIndexPage currentUser={currentUser} />
       </Route>
 
@@ -47,7 +56,7 @@ const App = (props) => {
       <Route exact path="/users/new" component={RegistrationForm} />
 
       <Route exact path="/user-sessions/new" component={SignInForm} />
-      
+
     </Switch>
   </Router>
   );

@@ -10,7 +10,7 @@ const MechMarketShowTile = (props) => {
         <a href={post.url}>
             <div className="mechmarketTile">
                 <p>
-                    {post.title} <br/>
+                    <strong>{post.title}</strong> <br/>
                     by: {post.author} <br/>
                     date: {date}
                 </p>

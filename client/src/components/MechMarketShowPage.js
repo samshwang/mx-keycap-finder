@@ -14,7 +14,7 @@ const MechMarketShowForm = (props) => {
             if (!response.ok) {
                 const errorMessage = `${response.status}: (${response.statusText})`
                 const error = new Error(errorMessage)
-                throw(error)         
+                throw(error)
             } else {
                 const body = await response.json()
                 setPosts(body.posts)
@@ -42,6 +42,9 @@ const MechMarketShowForm = (props) => {
 
     return (
         <div>
+            <div className="mechmarketHeader">
+                <h5>Check recent <a href="https://www.reddit.com/r/mechmarket/" >r/mechmarket</a> posts selling {props.name}:</h5>
+            </div>
             {posts}
         </div>
     )
