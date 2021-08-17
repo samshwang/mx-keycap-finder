@@ -23,4 +23,10 @@ schema.
 
 ## to do
 This website is currently an early, workable prototype. Immediate priorities of new features include:
-- 
+- expand searchable items
+- revamp the search system so the users can search by pre-filled tags
+- add features for regular, non-admin, accounts
+    - voting feature
+- add separate pages for
+    - designers
+    - vendors
