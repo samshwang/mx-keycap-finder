@@ -5,14 +5,14 @@ being built on the PERN stack (PostgreSQL, Express, React, NodeJS)
 
 <img src="./preview.PNG" />
 
-# installation
+## installation
 download or clone the repository to the directory of your choice and run
-$yarn run install
+`$yarn run install`
 to setup default configurations to get the website up and running.
 
-# usage
+## usage
 run
-$yarn run dev
+`$yarn run dev`
 from the root of the repository to start your local webserver hosting the website at localhost:3000
 
 #
