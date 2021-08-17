@@ -29,7 +29,6 @@ setsRouter.get("/:id", async (req, res) => {
         const vendors = await set.$relatedQuery("vendors")
         set.USvendor = vendors[0]
         const designers = await set.$relatedQuery("designers")
-        console.log(designers)
         if (designers[0]) {
             set.designer = designers[0].name
         }

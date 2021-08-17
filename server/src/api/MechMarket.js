@@ -11,7 +11,6 @@ class MechMarket {
 
     async getPosts() {
         const url = `https://www.reddit.com/r/mechmarket/search.json?q="${this.getSetNameString()}"&restrict_sr="true"&sort="new"`
-        console.log(url)
 
         let postsObjects = []
 

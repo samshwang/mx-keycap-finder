@@ -52,7 +52,6 @@ const NewSetForm = (props) => {
               }
             } else {
                 const body = await response.json()
-                console.log(body)
                 setNewSetID(body.set.id)
                 setRedirectToIndex(true)
             }

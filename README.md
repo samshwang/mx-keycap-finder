@@ -30,3 +30,5 @@ This website is currently an early, workable prototype. Immediate priorities of 
 - add separate pages for
     - designers
     - vendors
+
+and much, much more...
