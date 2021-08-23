@@ -4,6 +4,7 @@ const { ValidationError } = objection
 
 import { Set } from "../../../models/index.js"
 import SearchProcessor from "../../../services/SearchProcessor.js"
+import PostProcessor from "../../../services/PostProcessor.js"
 import setsMechMarketRouter from "./setsMechMarketRouter.js"
 
 const setsRouter = new express.Router()
@@ -29,9 +30,11 @@ setsRouter.get("/:id", async (req, res) => {
         const vendors = await set.$relatedQuery("vendors")
         set.USvendor = vendors[0]
         const designers = await set.$relatedQuery("designers")
-        if (designers[0]) {
-            set.designer = designers[0].name
-        }
+        set.designer = designers
+        const colors = await set.$relatedQuery("colors")
+        set.color = colors
+        const themes = await set.$relatedQuery("themes")
+        set.theme = themes
         return res.status(200).json({set})
     } catch (error) {
         return res.status(500).json({error})
@@ -39,10 +42,10 @@ setsRouter.get("/:id", async (req, res) => {
 })
 
 setsRouter.post("/new", async (req, res) => {
-    const incomingSet = req.body
     try {
-        const newSet = await Set.query().insertAndFetch(incomingSet)
-        return res.status(201).json({set: newSet})
+        const incomingSet = await PostProcessor.postSet(req.body)
+        console.log(incomingSet)
+        return res.status(201).json({set: incomingSet})
     } catch (error) {
         if(error instanceof ValidationError) {
             return res.status(422).json({ error: error.data })
