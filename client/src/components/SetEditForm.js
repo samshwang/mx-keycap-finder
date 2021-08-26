@@ -10,8 +10,12 @@ const SetEditForm = (props) => {
 
     const emptyForm = {
         name: "",
+        designer: "",
+        color: "",
+        theme: "",
         profile: "",
         imageURLpath: "",
+        vendor: "",
 
         link: "",
         releaseDate: "",
@@ -96,103 +100,139 @@ const SetEditForm = (props) => {
     if (props.currentUser && props.currentUser.administrator === true) {
         return (
             <div className="newSetForm" onSubmit={submitForm}>
-            <ErrorList errors={errors} />
-            <h4>Edit Keycap Set</h4>
-            <form>
-            <label htmlFor="name">
-            Name:
-            <input
-            type="text"
-            name="name"
-            onChange={trackUserInput}
-            value={getEdittedSet.name}
-            />
-            </label>
+                <ErrorList errors={errors} />
+                <h4>Edit Keycap Set</h4>
+                <form>
+                    <label htmlFor="name">
+                        Name:
+                        <input
+                            type="text"
+                            name="name"
+                            onChange={trackUserInput}
+                            value={getEdittedSet.name}
+                        />
+                    </label>
 
-            <label htmlFor="profile">
-            Profile:
-            <input
-            type="text"
-            name="profile"
-            onChange={trackUserInput}
-            value={getEdittedSet.profile}
-            />
-            </label>
+                    <label htmlFor="designer">
+                        Designers:
+                        <input
+                            type="text"
+                            name="designer"
+                            onChange={trackUserInput}
+                        />
+                    </label>
 
-            <label htmlFor="imageURLpath">
-            Image Link:
-            <input
-            type="text"
-            name="imageURLpath"
-            onChange={trackUserInput}
-            value={getEdittedSet.imageURLpath}
-            />
-            </label>
+                    <label htmlFor="color">
+                        Colors:
+                        <input
+                            type="text"
+                            name="color"
+                            onChange={trackUserInput}
+                        />
+                    </label>
 
-            <label htmlFor="link">
-            Website:
-            <input
-            type="text"
-            name="link"
-            onChange={trackUserInput}
-            value={getEdittedSet.link}
-            />
-            </label>
+                    <label htmlFor="theme">
+                        Themes:
+                        <input
+                            type="text"
+                            name="theme"
+                            onChange={trackUserInput}
+                        />
+                    </label>
 
-            <label htmlFor="releaseDate">
-            Release Date:
-            <input
-            type="date"
-            name="releaseDate"
-            onChange={trackUserInput}
-            value={getEdittedSet.releaseDate}
-            />
-            </label>
+                    <label htmlFor="profile">
+                        Profile:
+                        <input
+                            type="text"
+                            name="profile"
+                            onChange={trackUserInput}
+                            value={getEdittedSet.profile}
+                        />
+                    </label>
 
-            <label htmlFor="salesFormat">
-            Sales Format:
-            <input
-            type="text"
-            name="salesFormat"
-            onChange={trackUserInput}
-            value={getEdittedSet.salesFormat}
-            />
-            </label>
+                    <label htmlFor="imageURLpath">
+                        Image Link:
+                        <input
+                            type="text"
+                            name="imageURLpath"
+                            onChange={trackUserInput}
+                            value={getEdittedSet.imageURLpath}
+                        />
+                    </label>
 
-            <label htmlFor="round">
-            Round:
-            <input
-            type="text"
-            name="round"
-            onChange={trackUserInput}
-            value={getEdittedSet.round}
-            />
-            </label>
+                    <label htmlFor="vendor">
+                        Vendor:
+                        <input
+                            type="text"
+                            name="vendor"
+                            onChange={trackUserInput}
+                        />
+                    </label>
 
-            <label htmlFor="status">
-            Status:
-            <input
-            type="text"
-            name="status"
-            onChange={trackUserInput}
-            value={getEdittedSet.status}
-            />
-            </label>
+                    <label htmlFor="link">
+                        Website:
+                        <input
+                            type="text"
+                            name="link"
+                            onChange={trackUserInput}
+                            value={getEdittedSet.link}
+                        />
+                    </label>
 
-            <div>
-            <input
-            className="inputButton"
-            type="submit"
-            value="Confirm Edits"
-            />
-            <input
-            className="inputButton"
-            type="submit"
-            value="Clear"
-            onClick={clearForm}
-            />
-            </div>
-            </form>
+                    <label htmlFor="releaseDate">
+                        Release Date:
+                        <input
+                            type="date"
+                            name="releaseDate"
+                            onChange={trackUserInput}
+                            value={getEdittedSet.releaseDate}
+                        />
+                    </label>
+
+                    <label htmlFor="salesFormat">
+                        Sales Format:
+                        <input
+                            type="text"
+                            name="salesFormat"
+                            onChange={trackUserInput}
+                            value={getEdittedSet.salesFormat}
+                        />
+                    </label>
+
+                    <label htmlFor="round">
+                        Round:
+                        <input
+                            type="text"
+                            name="round"
+                            onChange={trackUserInput}
+                            value={getEdittedSet.round}
+                        />
+                    </label>
+
+                    <label htmlFor="status">
+                        Status:
+                        <input
+                            type="text"
+                            name="status"
+                            onChange={trackUserInput}
+                            value={getEdittedSet.status}
+                        />
+                    </label>
+
+                    <div>
+                    <input
+                        className="inputButton"
+                        type="submit"
+                        value="Confirm Edits"
+                        />
+                    <input
+                        className="inputButton"
+                        type="submit"
+                        value="Clear"
+                        onClick={clearForm}
+                    />
+                    </div>
+                </form>
             </div>
         )
     } else {
