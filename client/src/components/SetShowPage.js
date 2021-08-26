@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useParams, Redirect } from "react-router-dom"
 
+import AttributesToString from "../services/AttributesToString.js"
 import MechMarketShowPage from "./MechMarketShowPage.js"
 import KitTile from "./KitTile.js"
 
@@ -34,6 +35,21 @@ const SetShowPage = (props) => {
         fetchSet()
     }, [])
 
+    let designers
+    if (getSet.designer) {
+        designers = AttributesToString.designersToString(getSet.designer)
+    }
+
+    let colors
+    if (getSet.color) {
+        colors = AttributesToString.colorsToString(getSet.color)
+    }
+
+    let themes
+    if (getSet.theme) {
+        themes = AttributesToString.colorsToString(getSet.theme)
+    }
+
     const kits = getSet.kits.map( kit => {
         return (
             <KitTile key={kit.id} kit={kit}/>
@@ -44,6 +60,8 @@ const SetShowPage = (props) => {
 
     let salesInformation = (
         <p>
+            <strong>Colors:</strong> {colors} <br/>
+            <strong>Themes:</strong> {themes} <br/>
             <strong>Profile:</strong> {getSet.profile} <br/>
             <strong>Sales Format:</strong> {getSet.salesFormat} <br/>
             <strong>Release Date:</strong> {releaseDate} <br/>
@@ -53,6 +71,8 @@ const SetShowPage = (props) => {
     if (getSet.USvendor) {
         salesInformation = (
             <p>
+                <strong>Colors:</strong> {colors} <br/>
+                <strong>Themes:</strong> {themes} <br/>
                 <strong>Profile:</strong> {getSet.profile} <br/>
                 <strong>Sales Format:</strong> {getSet.salesFormat} <br/>
                 <strong>US Vendor:</strong> <a href={getSet.USvendor.url}>{getSet.USvendor.name}</a>  <br/>
@@ -98,7 +118,7 @@ const SetShowPage = (props) => {
     }
 
     if(shouldRedirectToIndex) {
-        return (<Redirect push to="/" />)
+        return (<Redirect push to="/list" />)
     }
 
     const editFormURL = `/edit/${id}`
@@ -112,7 +132,7 @@ const SetShowPage = (props) => {
             <div className="showPageDetails">
                 <div className="setHeader">
                     <h2><strong>{getSet.name}</strong></h2>
-                    <p>by {getSet.designer}</p>
+                    <p>by {designers}</p>
                     <div className="showPageImage">
                         <img src={getSet.imageURLpath} alt="{getSet.name} display" />
                     </div>
