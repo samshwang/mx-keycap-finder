@@ -1,5 +1,5 @@
 
-class SetShowPageProcessor {
+class AttributesToString {
     static designersToString(designerArray) {
         let rtn = ""
         designerArray.forEach( (element, index) => {
@@ -38,4 +38,4 @@ class SetShowPageProcessor {
 
 }
 
-export default SetShowPageProcessor
+export default AttributesToString

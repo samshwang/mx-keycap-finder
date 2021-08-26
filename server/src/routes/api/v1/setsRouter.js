@@ -2,9 +2,10 @@ import express from "express"
 import objection from "objection"
 const { ValidationError } = objection
 
-import { Set } from "../../../models/index.js"
+import { Set, SetColorway, SetDesigner, SetTheme } from "../../../models/index.js"
 import SearchProcessor from "../../../services/SearchProcessor.js"
 import PostProcessor from "../../../services/PostProcessor.js"
+import EditProcessor from "../../../services/EditProcessor.js"
 import setsMechMarketRouter from "./setsMechMarketRouter.js"
 
 const setsRouter = new express.Router()
@@ -29,8 +30,10 @@ setsRouter.get("/:id", async (req, res) => {
         set.kits = await set.$relatedQuery("kits")
         const vendors = await set.$relatedQuery("vendors")
         set.USvendor = vendors[0]
+
         const designers = await set.$relatedQuery("designers")
         set.designer = designers
+
         const colors = await set.$relatedQuery("colors")
         set.color = colors
         const themes = await set.$relatedQuery("themes")
@@ -66,19 +69,34 @@ setsRouter.delete("/:id", async (req, res) => {
 
 setsRouter.patch("/edit/:id", async (req, res) => {
     const setID = req.params.id
-    const edits = req.body
+    const { name, profile, imageURLpath, link, releaseDate, salesFormat, round, status } = req.body
+    const { designer, color, theme, vendor } = req.body
+    
     try {
         const set = await Set.query().findById(setID)
         const edittedSet = await Set.query().updateAndFetchById(setID, {
-            name: edits.name,
-            profile: edits.profile,
-            imageURLpath: edits.imageURLpath,
-            link: edits.link,
-            releaseDate: edits.releaseDate,
-            salesFormat: edits.salesFormat,
-            round: edits.round,
-            status: edits.status
+            name: name,
+            profile: profile,
+            imageURLpath: imageURLpath,
+            link: link,
+            releaseDate: releaseDate,
+            salesFormat: salesFormat,
+            round: round,
+            status: status
         })
+
+        //designers
+        await SetDesigner.query().delete().where("setID", setID)
+        await EditProcessor.processDesigners(designer, setID)
+
+        //colors
+        await SetColorway.query().delete().where("setID", setID)
+        await EditProcessor.processColors(color, setID)
+
+        //themes
+        await SetTheme.query().delete().where("setID", setID)
+        await EditProcessor.processThemes(theme, setID)
+
         return res.status(200).json({ edittedSet })
     } catch (error) {
         return res.status(500).json({ error })

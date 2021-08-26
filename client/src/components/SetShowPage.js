@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useParams, Redirect } from "react-router-dom"
 
-import SetShowPageProcessor from "../services/SetShowPageProcessor.js"
+import AttributesToString from "../services/AttributesToString.js"
 import MechMarketShowPage from "./MechMarketShowPage.js"
 import KitTile from "./KitTile.js"
 
@@ -37,17 +37,17 @@ const SetShowPage = (props) => {
 
     let designers
     if (getSet.designer) {
-        designers = SetShowPageProcessor.designersToString(getSet.designer)
+        designers = AttributesToString.designersToString(getSet.designer)
     }
 
     let colors
     if (getSet.color) {
-        colors = SetShowPageProcessor.colorsToString(getSet.color)
+        colors = AttributesToString.colorsToString(getSet.color)
     }
 
     let themes
     if (getSet.theme) {
-        themes = SetShowPageProcessor.colorsToString(getSet.theme)
+        themes = AttributesToString.colorsToString(getSet.theme)
     }
 
     const kits = getSet.kits.map( kit => {

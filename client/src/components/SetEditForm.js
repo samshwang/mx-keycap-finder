@@ -4,6 +4,7 @@ import { useParams, Redirect } from "react-router-dom"
 import ErrorList from "./ErrorList.js"
 import translateServerErrors from "../services/translateServerErrors.js"
 import TimeFormatConverter from "../services/TimeFormatConverter.js"
+import AttributesToString from "../services/AttributesToString.js"
 
 const SetEditForm = (props) => {
     const { id } = useParams()
@@ -37,6 +38,9 @@ const SetEditForm = (props) => {
                 throw(error)
             } else {
                 const set = await response.json()
+                set.set.designer = AttributesToString.designersToString(set.set.designer)
+                set.set.color = AttributesToString.colorsToString(set.set.color)
+                set.set.theme = AttributesToString.themesToString(set.set.theme)
                 set.set.releaseDate = TimeFormatConverter.db2js(set.set.releaseDate)
                 setEdittedSet(set.set)
             }
@@ -119,6 +123,7 @@ const SetEditForm = (props) => {
                             type="text"
                             name="designer"
                             onChange={trackUserInput}
+                            value={getEdittedSet.designer}
                         />
                     </label>
 
@@ -128,6 +133,7 @@ const SetEditForm = (props) => {
                             type="text"
                             name="color"
                             onChange={trackUserInput}
+                            value={getEdittedSet.color}
                         />
                     </label>
 
@@ -137,6 +143,7 @@ const SetEditForm = (props) => {
                             type="text"
                             name="theme"
                             onChange={trackUserInput}
+                            value={getEdittedSet.theme}
                         />
                     </label>
 
