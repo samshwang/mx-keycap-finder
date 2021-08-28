@@ -36,6 +36,10 @@ setsRouter.get("/:id", async (req, res) => {
         set.color = colors
         const themes = await set.$relatedQuery("themes")
         set.theme = themes
+
+        const vendor_na = await set.$relatedQuery("vendor_na")
+        set.vendor_na = vendor_na
+
         return res.status(200).json({set})
     } catch (error) {
         return res.status(500).json({error})

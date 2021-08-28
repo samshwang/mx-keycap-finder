@@ -7,7 +7,7 @@
  */
 exports.up = async (knex) => {
     return knex.schema.table("sets", (table) => {
-        table.bigInteger("vendor_na").unsigned().index().references("vendors.id").onUpdate("CASCADE").onDelete("CASCADE")
+        table.bigInteger("vendor_na_ID").unsigned().index().references("vendors.id").onUpdate("CASCADE").onDelete("CASCADE")
     })
 }
 

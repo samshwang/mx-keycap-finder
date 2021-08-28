@@ -25,12 +25,13 @@ class Vendor extends Model {
           to: "setvendors.vendorID"
         }
       },
+
       sets_na: {
           relation: Model.HasManyRelation,
           modelClass: Set,
           join: {
               from: "vendors.id",
-              to: "sets.vendor_na"
+              to: "sets.vendor_na_ID"
           }
       }
     }

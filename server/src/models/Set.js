@@ -101,11 +101,12 @@ class Set extends Model {
                     to: "setdesigners.setID"
                 }
             },
+
             vendor_na: {
                 relation: Model.BelongsToOneRelation,
                 modelClass: Vendor,
                 join: {
-                    from: "sets.vendor_na",
+                    from: "sets.vendor_na_ID",
                     to: "vendors.id"
                 }
             }

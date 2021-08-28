@@ -4,9 +4,9 @@ class VendorSeeder {
   static async seed() {
     const vendors = [
       { name: "NovelKeys", url: "https://novelkeys.xyz/" }, //1
-      { name: "Mechs and Co", url: "https://mechsandco.com/" },
+      { name: "Mechs and Co", url: "https://mechsandco.com/" }, //2
       { name: "CannonKeys", url: "https://cannonkeys.com/" }, //3
-      { name: "Omnitype", url: "https://omnitype.com/" },
+      { name: "Omnitype", url: "https://omnitype.com/" }, //4
       { name: "Drop", url: "https://drop.com/home" }, //5
       { name: "Kono", url: "https://kono.store/" }, //6
     ]
