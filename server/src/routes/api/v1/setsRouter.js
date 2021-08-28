@@ -30,10 +30,8 @@ setsRouter.get("/:id", async (req, res) => {
         set.kits = await set.$relatedQuery("kits")
         const vendors = await set.$relatedQuery("vendors")
         set.USvendor = vendors[0]
-
         const designers = await set.$relatedQuery("designers")
         set.designer = designers
-
         const colors = await set.$relatedQuery("colors")
         set.color = colors
         const themes = await set.$relatedQuery("themes")
@@ -71,7 +69,7 @@ setsRouter.patch("/edit/:id", async (req, res) => {
     const setID = req.params.id
     const { name, profile, imageURLpath, link, releaseDate, salesFormat, round, status } = req.body
     const { designer, color, theme, vendor } = req.body
-    
+
     try {
         const set = await Set.query().findById(setID)
         const edittedSet = await Set.query().updateAndFetchById(setID, {
