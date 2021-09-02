@@ -21,6 +21,7 @@ exports.up = async (knex) => {
         table.bigInteger("vendor_sea_ID").unsigned().index().references("vendors.id").onUpdate("CASCADE").onDelete("CASCADE")
         table.bigInteger("vendor_latam_ID").unsigned().index().references("vendors.id").onUpdate("CASCADE").onDelete("CASCADE")
         table.bigInteger("vendor_philippines_ID").unsigned().index().references("vendors.id").onUpdate("CASCADE").onDelete("CASCADE")
+        table.bigInteger("vendor_international_ID").unsigned().index().references("vendors.id").onUpdate("CASCADE").onDelete("CASCADE")
     })
 }
 
@@ -43,5 +44,6 @@ exports.down = (knex) => {
         table.dropColumn("vendor_sea_ID")
         table.dropColumn("vendor_latam_ID")
         table.dropColumn("vendor_philippines_ID")
+        table.dropColumn("vendor_international_ID")
     })
 }

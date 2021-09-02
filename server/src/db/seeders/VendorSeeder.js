@@ -13,7 +13,7 @@ class VendorSeeder {
       { name: "monokei", url: "https://monokei.co/" }, //8
       { name: "zFrontier", url: "https://en.zfrontier.com/" }, //9
       { name: "Deskhero", url: "https://www.deskhero.ca/" }, //10
-      { name: "mykeboard", url: "https://mykeyboard.eu/" }, //11
+      { name: "Mykeboard", url: "https://mykeyboard.eu/" }, //11
       { name: "Proto[Typist]", url: "https://prototypist.net/" }, //12
       { name: "Daily Clack", url: "https://dailyclack.com/" }, //13
       { name: "Fancy Customs", url: "https://fancycustoms.com/" }, //14

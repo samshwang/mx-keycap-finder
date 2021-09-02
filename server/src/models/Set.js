@@ -214,6 +214,14 @@ class Set extends Model {
                     from: "sets.vendor_philippines_ID",
                     to: "vendors.id"
                 }
+            },
+            vendor_international: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_international_ID",
+                    to: "vendors.id"
+                }
             }
         }
     }

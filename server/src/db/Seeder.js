@@ -16,7 +16,7 @@ class Seeder {
   static async seed() {
     console.log("seeding vendors...")
     await VendorSeeder.seed()
-    
+
     console.log("seeding sets...")
     await SetSeeder.seed()
 
