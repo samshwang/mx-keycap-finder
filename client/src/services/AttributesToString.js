@@ -11,7 +11,7 @@ class AttributesToString {
 
         return rtn
     }
-    
+
     static colorsToString(colorsArray) {
         let rtn = ""
         colorsArray.forEach( (element, index) => {
@@ -23,7 +23,7 @@ class AttributesToString {
 
         return rtn
     }
-    
+
     static themesToString(themesArray) {
         let rtn = ""
         themesArray.forEach( (element, index) => {

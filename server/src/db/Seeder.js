@@ -14,6 +14,9 @@ import UserSeeder from "./seeders/UserSeeder.js"
 
 class Seeder {
   static async seed() {
+    console.log("seeding vendors...")
+    await VendorSeeder.seed()
+    
     console.log("seeding sets...")
     await SetSeeder.seed()
 
@@ -31,9 +34,6 @@ class Seeder {
 
     console.log("seeding set themes...")
     await SetThemeSeeder.seed()
-
-    console.log("seeding vendors...")
-    await VendorSeeder.seed()
 
     console.log("seeding set vendors...")
     await SetVendorSeeder.seed()

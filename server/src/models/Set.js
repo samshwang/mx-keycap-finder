@@ -100,6 +100,120 @@ class Set extends Model {
                     from: "sets.id",
                     to: "setdesigners.setID"
                 }
+            },
+
+            //vendor relations
+            vendor_na: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_na_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_eu: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_eu_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_usa: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_usa_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_canada: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_canada_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_uk: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_uk_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_australia: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_australia_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_oceana: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_oceana_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_singapore: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_singapore_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_korea: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_korea_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_china: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_china_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_asia: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_asia_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_sea: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_sea_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_latam: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_latam_ID",
+                    to: "vendors.id"
+                }
+            },
+            vendor_philippines: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Vendor,
+                join: {
+                    from: "sets.vendor_philippines_ID",
+                    to: "vendors.id"
+                }
             }
         }
     }

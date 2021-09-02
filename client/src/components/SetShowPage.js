@@ -8,7 +8,6 @@ import KitTile from "./KitTile.js"
 const SetShowPage = (props) => {
     const [getSet, setSet] = useState({
         kits: [],
-        USvendor: {},
     })
     const [shouldRedirectToIndex, setShouldRedirectToIndex] = useState(false)
     const [shouldRedirectToEditForm, setShouldRedirectToEditForm] = useState(false)
@@ -50,15 +49,9 @@ const SetShowPage = (props) => {
         themes = AttributesToString.colorsToString(getSet.theme)
     }
 
-    const kits = getSet.kits.map( kit => {
-        return (
-            <KitTile key={kit.id} kit={kit}/>
-        )
-    })
-
     const releaseDate = new Date(getSet.releaseDate).toLocaleDateString("en-US")
 
-    let salesInformation = (
+    const setDetails = (
         <p>
             <strong>Colors:</strong> {colors} <br/>
             <strong>Themes:</strong> {themes} <br/>
@@ -68,19 +61,25 @@ const SetShowPage = (props) => {
             <strong>Status:</strong> {getSet.status} <br/>
         </p>
     )
-    if (getSet.USvendor) {
-        salesInformation = (
-            <p>
-                <strong>Colors:</strong> {colors} <br/>
-                <strong>Themes:</strong> {themes} <br/>
-                <strong>Profile:</strong> {getSet.profile} <br/>
-                <strong>Sales Format:</strong> {getSet.salesFormat} <br/>
-                <strong>US Vendor:</strong> <a href={getSet.USvendor.url}>{getSet.USvendor.name}</a>  <br/>
-                <strong>Release Date:</strong> {releaseDate} <br/>
-                <strong>Status:</strong> {getSet.status} <br/>
-            </p>
-        )
+
+    let vendorDetails
+    let vendorKey = -1
+    if (getSet.vendors) {
+        vendorDetails = Object.values(getSet.vendors).map( vendor => {
+            if (vendor.vendor) {
+                vendorKey++
+                return (
+                    <li key={vendorKey}>{vendor.region}: <a href={vendor.vendor.url}>{vendor.vendor.name}</a></li>
+                )
+            }
+        })
     }
+
+    const kits = getSet.kits.map( kit => {
+        return (
+            <KitTile key={kit.id} kit={kit}/>
+        )
+    })
 
     const editSet = (event) => {
         setShouldRedirectToEditForm(true)
@@ -138,8 +137,13 @@ const SetShowPage = (props) => {
                     </div>
                 </div>
 
-                <div className="salesInformation">
-                    {salesInformation}
+                <div className="setDetails">
+                    {setDetails}
+                </div>
+
+                <div className="setDetails">
+                    <h3><strong>Vendors:</strong></h3>
+                    {vendorDetails}
                 </div>
 
                 <div className="kitsDisplay">

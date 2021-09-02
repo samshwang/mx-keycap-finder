@@ -32,7 +32,9 @@ const MechMarketShowForm = (props) => {
 
     if (getPosts.length === 0) {
         posts = (
-            <p>No relevant mechmarket posts found...</p>
+            <div className="mechmarketNotFound">
+                <p>No relevant mechmarket posts found...</p>
+            </div>
         )
     }
 
