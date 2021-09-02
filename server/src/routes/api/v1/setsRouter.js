@@ -28,17 +28,36 @@ setsRouter.get("/:id", async (req, res) => {
     try {
         const set = await Set.query().findById(setID)
         set.kits = await set.$relatedQuery("kits")
-        const vendors = await set.$relatedQuery("vendors")
-        set.USvendor = vendors[0]
-        const designers = await set.$relatedQuery("designers")
-        set.designer = designers
-        const colors = await set.$relatedQuery("colors")
-        set.color = colors
-        const themes = await set.$relatedQuery("themes")
-        set.theme = themes
+
+        set.designer = await set.$relatedQuery("designers")
+        set.color = await set.$relatedQuery("colors")
+        set.theme = await set.$relatedQuery("themes")
 
         const vendor_na = await set.$relatedQuery("vendor_na")
-        set.vendor_na = vendor_na
+        const vendor_eu = await set.$relatedQuery("vendor_eu")
+
+
+        let vendors = {
+            vendor_na: vendor_na,
+            vendor_eu: vendor_eu
+        }
+
+        set.vendors = vendors
+
+        // set.vendor_na = await set.$relatedQuery("vendor_na")
+        // set.vendor_eu = await set.$relatedQuery("vendor_eu")
+        // set.vendor_usa = await set.$relatedQuery("vendor_usa")
+        // set.vendor_canada = await set.$relatedQuery("vendor_canada")
+        // set.vendor_uk = await set.$relatedQuery("vendor_uk")
+        // set.vendor_australia = await set.$relatedQuery("vendor_australia")
+        // set.vendor_oceana = await set.$relatedQuery("vendor_oceana")
+        // set.vendor_singapore = await set.$relatedQuery("vendor_singapore")
+        // set.vendor_korea = await set.$relatedQuery("vendor_korea")
+        // set.vendor_china = await set.$relatedQuery("vendor_china")
+        // set.vendor_asia = await set.$relatedQuery("vendor_asia")
+        // set.vendor_sea = await set.$relatedQuery("vendor_sea")
+        // set.vendor_latam = await set.$relatedQuery("vendor_latam")
+        // set.vendor_philippines = await set.$relatedQuery("vendor_philippines")
 
         return res.status(200).json({set})
     } catch (error) {
