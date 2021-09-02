@@ -5,7 +5,6 @@ import SearchForm from "./SearchForm.js"
 
 const SetIndexPage = (props) => {
     const [getSets, setSets] = useState([])
-    console.log(getSets)
 
     const fetchSets = async () => {
         try {

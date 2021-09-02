@@ -90,7 +90,7 @@
     margin-bottom: .5rem;
 }
 
-.salesInformation {
+.setDetails {
     background-color: #F1F8FA;
     border-radius: 5px;
     padding: 3%;
@@ -120,6 +120,11 @@
 
 .mechmarketHeader {
     margin: .5rem;
+}
+
+.mechmarketNotFound {
+    margin: .5rem;
+    font-style: italic;
 }
 
 .mechmarketTile {
@@ -217,4 +222,8 @@ p {
 
 h5 {
     font-weight: bold;
+}
+
+li {
+    font-size: 18px;
 }
