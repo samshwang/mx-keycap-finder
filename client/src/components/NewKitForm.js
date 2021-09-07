@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Redirect, useParams } from "react-router-dom"
 
 import ErrorList from "./ErrorList.js"
@@ -15,6 +15,28 @@ const NewKitForm = (props) => {
 
     const [getNewKit, setNewKit] = useState(emptyForm)
     const [errors, setErrors] = useState([])
+    const [redirectToSetPage, setRedirectToSetPage] = useState(false)
+    const [getSet, setSet] = useState("...")
+
+    const fetchSet = async () => {
+        try {
+            const response = await fetch(`/api/v1/sets/${id}`)
+            if (!response.ok) {
+                const errorMessage = `${response.status}: (${response.statusText})`
+                const error = new Error(errorMessage)
+                throw(error)
+            } else {
+                const set = await response.json()
+                setSet(set.set)
+            }
+        } catch (error) {
+            console.log(`Error in Fetch: ${error.message}`)
+        }
+    }
+
+    useEffect( () => {
+        fetchSet()
+    }, [])
 
     const trackUserInput = (event) => {
         setNewKit({
@@ -25,6 +47,32 @@ const NewKitForm = (props) => {
 
     const submitForm = async (event) => {
         event.preventDefault()
+
+        try {
+            const response = await fetch(`/api/v1/sets/${getSet.id}/newkit`, {
+                method: "POST",
+                headers: new Headers({
+                    "Content-Type": "application/json"
+                }),
+                body: JSON.stringify(getNewKit)
+            })
+
+            if(!response.ok) {
+                if(response.status === 422) {
+                    const body = await response. json()
+                    const newErrors = translateServerErrors(body.errors)
+                    return setErrors(newErrors)
+                } else {
+                    const errorMessage = `${response.status}: (${response.statusText})`
+                    const error = new Error(errorMessage)
+                    throw(error)
+                }
+            } else {
+                setRedirectToSetPage(true)
+            }
+        } catch (error) {
+            console.error(`Error in Fetch: ${error.message}`)
+        }
     }
 
     const clearForm = (event) => {
@@ -32,11 +80,20 @@ const NewKitForm = (props) => {
         setNewKit(emptyForm)
     }
 
+    const setURL = `/${getSet.id}`
+    console.log(setURL)
+    console.log(redirectToSetPage)
+    if (redirectToSetPage) {
+        return (
+            <Redirect push to={setURL} />
+        )
+    }
+
     if (props.currentUser && props.currentUser.administrator === true) {
         return (
             <div className="newForm" onSubmit={submitForm}>
             <ErrorList errors={errors} />
-            <h3>Submit a New Kit for...</h3>
+            <h3>Submit a New Kit for {getSet.name}</h3>
                 <form>
                     <label htmlFor="name">
                     Name <em>(required)</em>:

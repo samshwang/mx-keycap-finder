@@ -6,10 +6,13 @@ import { Set, SetColorway, SetDesigner, SetTheme } from "../../../models/index.j
 import SearchProcessor from "../../../services/SearchProcessor.js"
 import PostProcessor from "../../../services/PostProcessor.js"
 import EditProcessor from "../../../services/EditProcessor.js"
+
 import setsMechMarketRouter from "./setsMechMarketRouter.js"
+import setsKitRouter from "./setsKitRouter.js"
 
 const setsRouter = new express.Router()
 
+setsRouter.use("/:id/newkit", setsKitRouter)
 setsRouter.use("/:id/mechmarket", setsMechMarketRouter)
 
 setsRouter.get("/", async (req, res) => {
@@ -77,7 +80,6 @@ setsRouter.get("/:id", async (req, res) => {
 setsRouter.post("/new", async (req, res) => {
     try {
         const incomingSet = await PostProcessor.postSet(req.body)
-        console.log(incomingSet)
         return res.status(201).json({set: incomingSet})
     } catch (error) {
         if(error instanceof ValidationError) {

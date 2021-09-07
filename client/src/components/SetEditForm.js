@@ -103,7 +103,7 @@ const SetEditForm = (props) => {
 
     if (props.currentUser && props.currentUser.administrator === true) {
         return (
-            <div className="newSetForm" onSubmit={submitForm}>
+            <div className="newForm" onSubmit={submitForm}>
                 <ErrorList errors={errors} />
                 <h4>Edit Keycap Set</h4>
                 <form>
