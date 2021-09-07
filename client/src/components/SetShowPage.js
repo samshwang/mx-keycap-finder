@@ -78,7 +78,11 @@ const SetShowPage = (props) => {
 
     const kits = getSet.kits.map( kit => {
         return (
-            <KitTile key={kit.id} kit={kit}/>
+            <KitTile
+                key={kit.id}
+                kit={kit}
+                currentUser={props.currentUser}
+            />
         )
     })
 
@@ -124,7 +128,7 @@ const SetShowPage = (props) => {
     }
 
     let adminKitOptions
-    if (props.currentUser && props.currentUser.administrator === true) {
+    if(props.currentUser && props.currentUser.administrator === true) {
         adminKitOptions = (
             <div>
                 <button className="adminKitOptionsAdd" onClick={addKit}>
