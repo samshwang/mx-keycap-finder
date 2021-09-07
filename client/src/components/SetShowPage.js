@@ -11,6 +11,7 @@ const SetShowPage = (props) => {
     })
     const [shouldRedirectToIndex, setShouldRedirectToIndex] = useState(false)
     const [shouldRedirectToEditForm, setShouldRedirectToEditForm] = useState(false)
+    const [shouldRedirectToNewKitForm, setshouldRedirectToNewKitForm] = useState(false)
 
     const { id } = useParams()
 
@@ -82,6 +83,7 @@ const SetShowPage = (props) => {
     })
 
     const editSet = (event) => {
+        event.preventDefault()
         setShouldRedirectToEditForm(true)
     }
 
@@ -102,27 +104,48 @@ const SetShowPage = (props) => {
         }
     }
 
-    let adminOptions
+    let adminSetOptions
     if (props.currentUser && props.currentUser.administrator === true) {
-        adminOptions = (
+        adminSetOptions = (
             <div>
-                <button className="adminOptionsEdit" onClick={editSet}>
-                    Edit Details
-                </button>
-                <button className="adminOptionsDelete" onClick={deleteSet}>
+                <button className="adminSetOptionsDelete" onClick={deleteSet}>
                     Delete Keycap Set
+                </button>
+                <button className="adminSetOptionsEdit" onClick={editSet}>
+                    Edit Keycap Details
                 </button>
             </div>
         )
     }
 
-    if(shouldRedirectToIndex) {
+    const addKit = (event) => {
+        event.preventDefault()
+        setshouldRedirectToNewKitForm(true)
+    }
+
+    let adminKitOptions
+    if (props.currentUser && props.currentUser.administrator === true) {
+        adminKitOptions = (
+            <div>
+                <button className="adminKitOptionsAdd" onClick={addKit}>
+                    Add Kit
+                </button>
+            </div>
+        )
+    }
+
+    if (shouldRedirectToIndex) {
         return (<Redirect push to="/list" />)
     }
 
     const editFormURL = `/edit/${id}`
-    if(shouldRedirectToEditForm) {
+    if (shouldRedirectToEditForm) {
         return (<Redirect push to={editFormURL} />)
+    }
+
+    const addKitURL = `/newkit/${id}`
+    if (shouldRedirectToNewKitForm) {
+        return (<Redirect push to={addKitURL} />)
     }
 
     return (
@@ -130,8 +153,15 @@ const SetShowPage = (props) => {
 
             <div className="showPageDetails">
                 <div className="setHeader">
-                    <h2><strong>{getSet.name}</strong></h2>
-                    <p>by {designers}</p>
+                    <div className="setHeaderDetails">
+                        <div className="setHeaderAdminOptions">
+                            {adminSetOptions}
+                        </div>
+                        <div>
+                            <h2><strong>{getSet.name}</strong></h2>
+                            <p>by {designers}</p>
+                        </div>
+                    </div>
                     <div className="showPageImage">
                         <img src={getSet.imageURLpath} alt="{getSet.name} display" />
                     </div>
@@ -147,11 +177,10 @@ const SetShowPage = (props) => {
                 </div>
 
                 <div className="kitsDisplay">
+                    {adminKitOptions}
                     <h3><strong>Kits:</strong></h3>
                     {kits}
                 </div>
-
-                {adminOptions}
             </div>
             <div className="mechmarketShowPage">
                 <MechMarketShowPage name={getSet.name}/>

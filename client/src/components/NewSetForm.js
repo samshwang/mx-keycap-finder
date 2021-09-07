@@ -78,7 +78,7 @@ const NewSetForm = (props) => {
 
     if (props.currentUser && props.currentUser.administrator === true) {
         return (
-            <div className="newSetForm" onSubmit={submitForm}>
+            <div className="newForm" onSubmit={submitForm}>
             <ErrorList errors={errors} />
             <h3>Submit a New Keycap Set</h3>
                 <form>
@@ -203,24 +203,24 @@ const NewSetForm = (props) => {
                     </label>
 
                     <div>
-                    <input
-                        className="inputButton"
-                        type="submit"
-                        value="Add"
-                    />
-                    <input
-                        className="inputButton"
-                        type="submit"
-                        value="clear"
-                        onClick={clearForm}
-                    />
+                        <input
+                            className="inputButton"
+                            type="submit"
+                            value="Add"
+                        />
+                        <input
+                            className="inputButton"
+                            type="submit"
+                            value="clear"
+                            onClick={clearForm}
+                        />
                     </div>
                 </form>
             </div>
         )
     } else {
         return (
-            <div className="newSetForm">
+            <div className="newForm">
                 <p>You must be logged into an admin account to add or edit keycap sets</p>
             </div>
         )

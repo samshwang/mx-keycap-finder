@@ -12,6 +12,7 @@ import SetShowPage from "./SetShowPage.js"
 import NewSetForm from "./NewSetForm.js"
 import SetEditForm from "./SetEditForm.js"
 import AboutPage from "./AboutPage.js"
+import NewKitForm from "./NewKitForm.js"
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -45,6 +46,10 @@ const App = (props) => {
 
       <Route exact path="/edit/:id">
         <SetEditForm currentUser={currentUser} />
+      </Route>
+
+      <Route exact path="/newkit/:id">
+        <NewKitForm currentUser={currentUser} />
       </Route>
 
       <Route exact path="/:id">

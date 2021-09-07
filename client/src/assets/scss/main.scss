@@ -52,7 +52,7 @@
 
 .setListHeader {
     height: 1%;
-    background-color: #D8E2E5;
+    background-color: #D8D8D8;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: .5rem;
@@ -88,6 +88,10 @@
     border-radius: 5px;
     padding: 3%;
     margin-bottom: .5rem;
+}
+
+.setHeaderAdminOptions {
+    float: right;
 }
 
 .setDetails {
@@ -136,22 +140,32 @@
   border: solid;
 }
 
-.adminOptionsDelete {
+.adminSetOptionsDelete {
   padding: 1rem;
-  margin-top: 1rem;
+  margin-left: .25rem;
   background-color: #EE5555;
   border-radius: 5px;
   font-weight: bold;
   color: white;
+  float: right;
 }
 
-.adminOptionsEdit {
+.adminSetOptionsEdit {
   padding: 1rem;
-  margin-top: 1rem;
-  margin-right: .5rem;
-  background-color: #D8E2E5;
+  margin-right: .25rem;
+  background-color: #D8D8D8;
   border-radius: 5px;
   font-weight: bold;
+  float: right;
+}
+
+.adminKitOptionsAdd {
+    padding: 1rem;
+    margin-right: .25rem;
+    background-color: #D8D8D8;
+    border-radius: 5px;
+    font-weight: bold;
+    float: right;
 }
 
 
@@ -166,7 +180,7 @@
 }
 
 
-.newSetForm {
+.newForm {
   height: 90%;
   padding: 5%;
   margin-left: 10%;
@@ -181,7 +195,7 @@
   padding: .5rem;
   margin-top: 1rem;
   margin-right: .5rem;
-  background-color: #D8E2E5;
+  background-color: #D8D8D8;
   border-radius: 5px;
   font-weight: bold;
 }
@@ -193,6 +207,8 @@
 .button {
   font-weight: 500;
 }
+
+
 
 .about {
     margin: 10%;
