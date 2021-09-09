@@ -138,17 +138,17 @@ const SetShowPage = (props) => {
         )
     }
 
-    if (shouldRedirectToIndex) {
+    if(shouldRedirectToIndex) {
         return (<Redirect push to="/list" />)
     }
 
     const editFormURL = `/edit/${id}`
-    if (shouldRedirectToEditForm) {
+    if(shouldRedirectToEditForm) {
         return (<Redirect push to={editFormURL} />)
     }
 
     const addKitURL = `/newkit/${id}`
-    if (shouldRedirectToNewKitForm) {
+    if(shouldRedirectToNewKitForm) {
         return (<Redirect push to={addKitURL} />)
     }
 
@@ -185,9 +185,6 @@ const SetShowPage = (props) => {
                     <h3><strong>Kits:</strong></h3>
                     {kits}
                 </div>
-            </div>
-            <div className="mechmarketShowPage">
-                <MechMarketShowPage name={getSet.name}/>
             </div>
         </div>
     )

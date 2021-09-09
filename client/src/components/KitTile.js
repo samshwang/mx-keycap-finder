@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 const KitTile = (props) => {
     const { name, price, imageURLpath, id } = props.kit
