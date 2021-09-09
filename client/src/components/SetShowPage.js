@@ -78,7 +78,11 @@ const SetShowPage = (props) => {
 
     const kits = getSet.kits.map( kit => {
         return (
-            <KitTile key={kit.id} kit={kit}/>
+            <KitTile
+                key={kit.id}
+                kit={kit}
+                currentUser={props.currentUser}
+            />
         )
     })
 
@@ -124,7 +128,7 @@ const SetShowPage = (props) => {
     }
 
     let adminKitOptions
-    if (props.currentUser && props.currentUser.administrator === true) {
+    if(props.currentUser && props.currentUser.administrator === true) {
         adminKitOptions = (
             <div>
                 <button className="adminKitOptionsAdd" onClick={addKit}>
@@ -134,17 +138,17 @@ const SetShowPage = (props) => {
         )
     }
 
-    if (shouldRedirectToIndex) {
+    if(shouldRedirectToIndex) {
         return (<Redirect push to="/list" />)
     }
 
     const editFormURL = `/edit/${id}`
-    if (shouldRedirectToEditForm) {
+    if(shouldRedirectToEditForm) {
         return (<Redirect push to={editFormURL} />)
     }
 
     const addKitURL = `/newkit/${id}`
-    if (shouldRedirectToNewKitForm) {
+    if(shouldRedirectToNewKitForm) {
         return (<Redirect push to={addKitURL} />)
     }
 
@@ -181,9 +185,6 @@ const SetShowPage = (props) => {
                     <h3><strong>Kits:</strong></h3>
                     {kits}
                 </div>
-            </div>
-            <div className="mechmarketShowPage">
-                <MechMarketShowPage name={getSet.name}/>
             </div>
         </div>
     )
