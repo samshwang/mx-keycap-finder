@@ -111,6 +111,13 @@
   padding: 2%;
 }
 
+.kitHeader {
+    display:flex;
+    flex-direction:row;
+}
+
+
+
 .mechmarketShowPage {
   margin-top: 55px;
   background-color: #F0EEEA;
@@ -170,6 +177,8 @@
 
 .adminKitOptionsDelete {
     padding: .5rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
     background-color: #EE5555;
     border-radius: 5px;
     font-weight: bold;

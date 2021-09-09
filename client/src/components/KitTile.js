@@ -32,7 +32,10 @@ const KitTile = (props) => {
 
     return (
         <div className="kitTile">
-            <h4>{name}</h4> {deleteKitButton}
+            <div className="kitHeader">
+                <h4>{name}</h4>
+                {deleteKitButton}
+            </div>
             <p>Price: ${price}</p>
             <div className="kitPictures">
                 <img src={imageURLpath} alt="" />
